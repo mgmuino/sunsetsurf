@@ -15,13 +15,10 @@ services:
             MYSQL_DATABASE: sunsetsurf
         ## Puertos que se exponen (exponer para acceso directo)
         ports:
-           - "3306:3306"        
-        # Entrypoint del container fusionado con el el entrypoint del dockerfile propio de mysql:5.7
-        # descargamos el sql de nuestra base de datos directamente de GitHub
-        command: sh -c "apt-get update &&
-                        apt-get install curl -y &&
-                        curl -o /docker-entrypoint-initdb.d/sunsetsurf.sql https://raw.githubusercontent.com/mgmuino/sunsetsurf/main/bd/sunsetsurf.sql &&
-                        /usr/local/bin/docker-entrypoint.sh mysqld"
+           - "3306:3306"
+        # Copiado de la base de datos en nuestro contenedor de mysql
+        volumes:
+            - ./sunsetsurf_src/bd/sunsetsurf.sql:/docker-entrypoint-initdb.d/sunsetsurf.sql
         # Network asociada al contenedor
         networks:
             - mynet
@@ -29,26 +26,15 @@ services:
         image: php:7-apache
         container_name: apache_sunsetsurf
         restart: always
-        # Volumen del contenedor que contendra el codigo de la aplicacion
+        # Carpeta montada en el sistema que contendra el codigo de la aplicacion
         volumes:
-            - sunsetsurf_app:/var/www/html
+            - ./sunsetsurf_src:/var/www/html
         expose:
             - 80
         ports:
             - 80:80
-        # Entrypoint del container fusionado con el el entrypoint del dockerfile propio de php:7-apache
-        # descargamos el codigo de nuestra app directamente de GitHub
-        command: sh -c "apt-get update &&
-                        apt-get install curl -y &&
-                        apt-get install unzip -y &&
-                        curl -o sunsetsurf-main.zip https://codeload.github.com/mgmuino/sunsetsurf/zip/refs/heads/main &&
-                        unzip -o sunsetsurf-main.zip &&
-                        cp -rf sunsetsurf-main/* . &&
-                        /usr/local/bin/docker-php-entrypoint apache2-foreground"
         networks:
-            - mynet
-volumes:
-    sunsetsurf_app:             
+            - mynet      
 networks:
     mynet:
-        driver: bridge 
+        driver: bridge
