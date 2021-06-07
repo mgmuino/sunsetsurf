@@ -1,64 +1,54 @@
 # Version del docker-compose
 version: "3"
-
 # Servicios a arrancar en conjunto. "Contenedores"
 services:
-    
     mysql:
         # Imagen de la que arrancara nuestro contenedor
-        image: mysql:5.7  
-
-        # Nombre del contenedor  
-        container_name: mysql_sunsetsurf 
-        
+        image: mysql:5.7
+        # Nombre del contenedor
+        container_name: mysql_sunsetsurf
         # Siempre que se caiga el contenedor lo reinicia(no funciona si lo paramos manualmente)
-        restart: always  
-
+        restart: always
         # Variables del entorno
         environment:
             MYSQL_ROOT_PASSWORD: abc123.
             MYSQL_DATABASE: sunsetsurf
-
         ## Puertos que se exponen (exponer para acceso directo)
         ports:
-           - "3306:3306"
-        
+           - "3306:3306"        
         # Entrypoint del container fusionado con el el entrypoint del dockerfile propio de mysql:5.7
+        # descargamos el sql de nuestra base de datos directamente de GitHub
         command: sh -c "apt-get update &&
                         apt-get install curl -y &&
-                        # descargamos el sql de nuestra base de datos directamente de GitHub
                         curl -o /docker-entrypoint-initdb.d/sunsetsurf.sql https://raw.githubusercontent.com/mgmuino/sunsetsurf/main/bd/sunsetsurf.sql &&
                         /usr/local/bin/docker-entrypoint.sh mysqld"
-
         # Network asociada al contenedor
         networks:
             - mynet
-
     php_apache:
         image: php:7-apache
         container_name: apache_sunsetsurf
         restart: always
         # Volumen del contenedor que contendra el codigo de la aplicacion
-        volumes:      
+        volumes:
             - sunsetsurf_app:/var/www/html
         expose:
             - 80
         ports:
             - 80:80
         # Entrypoint del container fusionado con el el entrypoint del dockerfile propio de php:7-apache
+        # descargamos el codigo de nuestra app directamente de GitHub
         command: sh -c "apt-get update &&
                         apt-get install curl -y &&
                         apt-get install unzip -y &&
-                        # descargamos el codigo de nuestra app directamente de GitHub
                         curl -o sunsetsurf-main.zip https://codeload.github.com/mgmuino/sunsetsurf/zip/refs/heads/main &&
                         unzip -o sunsetsurf-main.zip &&
-                        cp -rf sunsetsurf-main/* . &&                                              
-                        /usr/local/bin/docker-php-entrypoint apache2-foreground" 
+                        cp -rf sunsetsurf-main/* . &&
+                        /usr/local/bin/docker-php-entrypoint apache2-foreground"
         networks:
             - mynet
-
 volumes:
-    sunsetsurf_app:                    
+    sunsetsurf_app:             
 networks:
     mynet:
-        driver: bridge      
+        driver: bridge 
