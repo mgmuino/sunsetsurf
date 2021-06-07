@@ -1,7 +1,7 @@
 <?php
 class conexion
 {
-    private static $dbName = 'mvc01_estudiantes' ;
+    private static $dbName = 'sunsetsurf' ;
     private static $dbHost = 'localhost' ;
     private static $dbUsername = 'root';
     private static $dbUserPassword = '';
