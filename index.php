@@ -1,18 +1,27 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <?php
-        // put your code here
-        ?>
-        <p>sdfsdf<p>
-    </body>
-</html>
+<?php
+require_once 'bd/conexion.php';
+
+$controller = 'main';
+
+// FrontController
+if(!isset($_REQUEST['c']))
+{
+    require_once "controller/$controller.controller.php";
+    $controller = ucwords($controller) . 'Controller';
+    $controller = new $controller;
+    $controller->index();    
+}
+else
+{
+    // Obtenemos el controlador que queremos cargar
+    $controller = strtolower($_REQUEST['c']);
+    $accion = isset($_REQUEST['a']) ? $_REQUEST['a'] : 'Index';
+    
+    // Instanciamos el controlador
+    require_once "controller/$controller.controller.php";
+    $controller = ucwords($controller) . 'Controller';
+    $controller = new $controller;
+    
+    // Llama la accion
+    call_user_func( array( $controller, $accion ) );
+}
