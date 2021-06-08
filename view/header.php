@@ -1,35 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>SUNSET SURF CORUÑA</title>
 
+        <!-- Required meta tags -->
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <link rel="stylesheet" href="../public/assets/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="../public/assets/css/bootstrap-theme.min.css" />
-        <link rel="stylesheet" href="../public/assets/js/jquery-ui/jquery-ui.min.css" />
-        <link rel="stylesheet" href="../public/assets/css/style.css" />
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
-        <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+        <title>Sunset Surf</title>
+        <!-- Custom styles -->
+        <link href="../public/assets/css/style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-
-
-
-        <div class="container">
-            <!--<div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand visible-xs-block visible-sm-block" href="">Inicio</a>
-            </div> -->
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav ">
-                    <li class="active"><a href="index.php?c=Alumno">Alumnos</a></li>
-                    <li><a href="index.php?c=Curso">Cursos</a></li>
-                </ul>
-            </div><!--/.nav-collapse -->
-        </div>
+        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+            <header class="masthead mb-auto">
+                <div class="inner">
+                    <h3 class="masthead-brand">Cover</h3>
+                    <nav class="nav nav-masthead justify-content-center">
+                        <a class="nav-link active" href="#">Home</a>
+                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="#">Acceso</a>
+                        <a class="nav-link" href="#">Registrarse</a>
+                    </nav>
+                </div>
+            </header>

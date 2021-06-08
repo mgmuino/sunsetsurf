@@ -1,16 +1,13 @@
-            <div class="row">
-                <div class="col-xs-12">
-                    <hr />
-                    <footer class="text-center well">
-                        Este es el pie de mi aplicación.
-                    </footer>                
-                </div>    
-            </div>
+            <footer class="mastfoot mt-auto">
+                <div class="inner">
+                    <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a
+                      href="https://twitter.com/mdo">@mdo</a>.</p>
+                </div>
+            </footer>
         </div>
-
-        <script src="../public/assets/js/bootstrap.min.js"></script>
-        <script src="../public/assets/js/jquery-ui/jquery-ui.min.js"></script>
-        <script src="../public/assets/js/ini.js"></script>
-        <script src="../public/assets/js/jquery.anexsoft-validator.js"></script>
+        <!-- Optional JavaScript -->
+        <!-- jQuery and Bootstrap Bundle (includes Popper) -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     </body>
 </html>

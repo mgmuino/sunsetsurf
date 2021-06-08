@@ -37,8 +37,7 @@ spl_autoload_register("my_autoloadModel");
 // FrontController
 if (!isset($_REQUEST['c'])) {
     require_once '../view/header.php';
-    echo "<h3>Bienvenido!! Selecciona una opción del menú para empezar.</h3>";
-    echo "<h4>En otra vista prepararíamos el texto y la configuración de la pantalla inicial de la aplicación, y la llamaríamos aquí.</h4>";
+    require_once '../view/indexview.php';
     require_once '../view/footer.php';
 } else {
     // Obtenemos el controlador que queremos cargar
