@@ -1,5 +1,5 @@
 <?php
-class tipoclase {
+class Tipoclase {
     private $nombre_tipo;
     private $descripcion;
     

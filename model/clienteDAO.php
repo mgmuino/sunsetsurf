@@ -6,149 +6,97 @@
  *  
  */
 
-require_once 'bd/database.php';
+require_once 'bd/conexion.php';
 require_once 'model/entidades/cliente.php';
-class ClienteDAO
-{
+
+class ClienteDAO {
+
     private $pdo;
-    
-    public function __construct()
-	{
-		try
-		{
-			$this->pdo = Database::connect();     
-		}
-		catch(Exception $e)
-		{
-			die($e->getMessage());
-		}
-	}
 
-	public function listar()
-	{
-		try
-		{
-			$result = array();
-
-			$stm = $this->pdo->prepare("SELECT * FROM clientes");
-			$stm->execute();
-                        
-			return $stm->fetchAll(PDO::FETCH_CLASS, 'Cliente');
-		}
-		catch(Exception $e)
-		{
-			die($e->getMessage());
-		}
-	}
-
-	public function obtener($id)
-	{ 
-		try 
-		{
-			$stm = $this->pdo
-			          ->prepare("SELECT * FROM clientes WHERE id = ?");
-			          
-
-			$stm->execute(array($id));
-			return $stm->fetchObject("Cliente");
-		} catch (Exception $e) 
-		{
-			die($e->getMessage());
-		}
-	}
-
-	public function eliminar($id)
-	{
-		try 
-		{
-			$stm = $this->pdo
-			            ->prepare("DELETE FROM clientes WHERE id = ?");			          
-
-			$stm->execute(array($id));
-		} catch (Exception $e) 
-		{
-			die($e->getMessage());
-		}
-	}
-
-	public function actualizar(Cliente $cliente)
-	{
-		try 
-		{
-			$sql = "UPDATE clientes SET 
-						nombre          = ?, 
-						apellido        = ?,
-                                                correo        = ?,
-						sexo            = ?, 
-						fechaNacimiento = ?
-				    WHERE id = ?";
-
-			$this->pdo->prepare($sql)
-			     ->execute(
-				    array(
-                        $cliente->getNombre(), 
-                        $cliente->getCorreo(),
-                        $cliente->getApellido(),
-                        $cliente->getSexo(),
-                        $cliente->getFechaNacimiento(),
-                        $cliente->getId()
-					)
-				);
-		} catch (Exception $e) 
-		{
-			die($e->getMessage());
-		}
-	}
-
-	public function registrar(Cliente $cliente)
-	{
-		try 
-		{
-		$sql = "INSERT INTO clientes (nombre,correo,apellido,sexo,fechaNacimiento,fechaRegistro) 
-		        VALUES (?, ?, ?, ?, ?, ?)";
-
-		$this->pdo->prepare($sql)
-		     ->execute(
-				array(
-                    $cliente->getNombre(),
-                    $cliente->getCorreo(), 
-                    $cliente->getApellido(), 
-                    $cliente->getSexo(),
-                    $cliente->getFechaNacimiento(),
-                    date('Y-m-d')
-                )
-			);
-		} catch (Exception $e) 
-		{
-			die($e->getMessage());
-		}
-	}
-        
-        //Otras funciones
-        public function buscarPor($nombreCampo, $valorCampo){
-            try
-		{
-			$result = array();
-
-			$stm = $this->pdo->prepare("SELECT * FROM clientes WHERE $nombreCampo='$valorCampo'");
-			$stm->execute();
-                        
-			return $stm->fetchAll(PDO::FETCH_CLASS, 'Cliente');
-		}
-		catch(Exception $e)
-		{
-			die($e->getMessage());
-		}
+    public function __construct() {
+        try {
+            $this->pdo = Conexion::connect();
+        } catch (Exception $e) {
+            die($e->getMessage());
         }
-        
-        public function alumnosCurso($idCurso){
-            
+    }
+
+    public function listar() {
+        try {
+            $result = array();
+
+            $stm = $this->pdo->prepare("SELECT id_cliente, nombre, apellidos, dni, fec_nac, telefono, email, num_clases, descripcion1, nombre1, telefono1, descripcion2, nombre2, telefono2
+                                        FROM clientes
+                                        INNER JOIN usuarios ON clientes.id_cliente=usuarios.id_usuario
+                                        INNER JOIN contactos_emergencia ON clientes.id_contacto_emerg=contactos_emergencia.id_contacto");
+            $stm->execute();
+
+            return $stm->fetchAll(PDO::FETCH_CLASS, 'Cliente');
+        } catch (Exception $e) {
+            die($e->getMessage());
         }
-        
-        public function relacion($nombreTabla, $idFK){
-            
-            
+    }
+
+    public function obtener($id) {
+        try {
+            $stm = $this->pdo->prepare("SELECT id_cliente, nombre, apellidos, dni, fec_nac, telefono, email, num_clases, descripcion1, nombre1, telefono1, descripcion2, nombre2, telefono2 
+                                        FROM clientes 
+                                        INNER JOIN usuarios ON clientes.id_cliente=usuarios.id_usuario
+                                        INNER JOIN contactos_emergencia ON clientes.id_contacto_emerg=contactos_emergencia.id_contacto
+                                        WHERE id_cliente = ?");
+
+
+            $stm->execute(array($id));
+            return $stm->fetchObject("Cliente");
+        } catch (Exception $e) {
+            die($e->getMessage());
         }
-        
-        //Los métodos comunes a varias clases pueden implementarse en una clase GeneralDAO
+    }
+
+//    public function eliminar($id) {
+//        try {
+//            $stm = $this->pdo->prepare("DELETE FROM clientes WHERE id_cliente = ?");
+//
+//            $stm->execute(array($id));
+//        } catch (Exception $e) {
+//            die($e->getMessage());
+//        }
+//    }
+
+    public function actualizar(Cliente $cliente) {
+        try {
+            $sql = "UPDATE clientes
+                    SET 
+                        num_clases = ?
+                    WHERE id_cliente = ?";
+
+            $this->pdo->prepare($sql)
+                    ->execute(
+                            array(
+                                $cliente->getNum_clases()
+                            )
+            );
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function registrar(Cliente $cliente) {
+        try {
+            $sql = "INSERT INTO clientes (id_cliente, num_clases, id_contacto_emerg) 
+		        VALUES (?, ?, ?)";
+
+            $this->pdo->prepare($sql)
+                    ->execute(
+                            array(
+                                $cliente->getId_cliente(),
+                                $cliente->getNum_clases(),
+                                $cliente->getId_contacto_emerg()
+                            )
+            );
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
 }

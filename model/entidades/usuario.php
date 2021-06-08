@@ -1,5 +1,5 @@
 <?php
-class usuario {
+class Usuario {
     private $id_usuario;
     private $nombre;
     private $apellidos;

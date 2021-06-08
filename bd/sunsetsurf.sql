@@ -148,13 +148,12 @@ CREATE TABLE `monitores` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tarifas_alquiler`
+-- Estructura de tabla para la tabla `tarifas_material`
 --
 
-CREATE TABLE `tarifas_alquiler` (
+CREATE TABLE `tarifas_material` (
   `id_tarifa` int(11) NOT NULL,
-  `precio` int(3) NOT NULL,
-  `tiempo` varchar(30) NOT NULL
+  `precio` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -257,9 +256,9 @@ ALTER TABLE `monitores`
   ADD KEY `FK_id_usuario` (`id_monitor`);
 
 --
--- Indices de la tabla `tarifas_alquiler`
+-- Indices de la tabla `tarifas_material`
 --
-ALTER TABLE `tarifas_alquiler`
+ALTER TABLE `tarifas_material`
   ADD PRIMARY KEY (`id_tarifa`);
 
 --
@@ -335,9 +334,9 @@ ALTER TABLE `monitores`
   MODIFY `id_monitor` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `tarifas_alquiler`
+-- AUTO_INCREMENT de la tabla `tarifas_material`
 --
-ALTER TABLE `tarifas_alquiler`
+ALTER TABLE `tarifas_material`
   MODIFY `id_tarifa` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -389,7 +388,7 @@ ALTER TABLE `compras`
 -- Filtros para la tabla `material`
 --
 ALTER TABLE `material`
-  ADD CONSTRAINT `material_ibfk_1` FOREIGN KEY (`id_tarifa`) REFERENCES `tarifas_alquiler` (`id_tarifa`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `material_ibfk_1` FOREIGN KEY (`id_tarifa`) REFERENCES `tarifas_material` (`id_tarifa`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `monitores`

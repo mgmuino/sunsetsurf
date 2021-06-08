@@ -1,5 +1,5 @@
 <?php
-class bono {
+class Bono {
     private $id_bono;
     private $precio;
     private $dias;
