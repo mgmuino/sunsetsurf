@@ -83,13 +83,12 @@ class ClienteDAO {
 
     public function registrar(Cliente $cliente) {
         try {
-            $sql = "INSERT INTO clientes (id_cliente, num_clases, id_contacto_emerg) 
-		        VALUES (?, ?, ?)";
+            $sql = "INSERT INTO clientes (num_clases, id_contacto_emerg) 
+		        VALUES (?, ?)";
 
             $this->pdo->prepare($sql)
                     ->execute(
                             array(
-                                $cliente->getId_cliente(),
                                 $cliente->getNum_clases(),
                                 $cliente->getId_contacto_emerg()
                             )

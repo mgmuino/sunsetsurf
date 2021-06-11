@@ -83,13 +83,12 @@ class MonitorDAO {
 
     public function registrar(Monitor $monitor) {
         try {
-            $sql = "INSERT INTO monitores (id_monitor, num_titulo, cert_delitos) 
-		        VALUES (?, ?, ?)";
+            $sql = "INSERT INTO monitores (num_titulo, cert_delitos) 
+		        VALUES (?, ?)";
 
             $this->pdo->prepare($sql)
                     ->execute(
                             array(
-                                $monitor->getId_monitor(),
                                 $monitor->getNum_titulo(),
                                 $monitor->getCert_delitos()
                             )
