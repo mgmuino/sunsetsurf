@@ -75,7 +75,7 @@ class ClienteController {
 
         //Creacion o Actualizacion de contacto
         $cont = new Contacto_emergencia();
-        $cont->setId_contacto($id_contacto);
+        
         $cont->setNombre1($nombre1);
         $cont->setDescripcion1($descripcion1);
         $cont->setTelefono1($telefono1);
@@ -87,7 +87,7 @@ class ClienteController {
 
         //Creacion o Actualizacion de usuario
         $usu = new Usuario();
-        $usu->getId_usuario($id);
+        
         $usu->setNombre($nombre);
         $usu->setApellidos($apellidos);
         $usu->setDni($dni);
@@ -100,10 +100,10 @@ class ClienteController {
             $this->modelusuario->actualizar($usu);
         } else {
             $this->modelusuario->registrar($usu);
-
+            
             $cli = new Cliente();
-            $cli->setId_cliente($usu->getId_usuario());
-            $cli->setId_contacto_emerg($cont->getId_contacto());
+            $cli->setId_cliente($this->modelusuario->masReciente()->getId_usuario());
+            $cli->setId_contacto_emerg($this->modelcontacto->masReciente()->getId_contacto());
             $this->modelcliente->registrar($cli);
         }
         header('Location: index.php');

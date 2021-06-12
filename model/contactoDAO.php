@@ -88,4 +88,18 @@ class ContactoDAO {
         }
     }
 
+    public function masReciente() {
+        try {
+            $stm = $this->pdo->prepare("SELECT    id_contacto, nombre1, descripcion1, telefono1, nombre2, descripcion2, telefono2
+                                        FROM      contactos_emergencia
+                                        ORDER BY  id_contacto DESC
+                                        LIMIT     1;");
+
+            $stm->execute();
+            return $stm->fetchObject("Contacto_emergencia");
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
 }

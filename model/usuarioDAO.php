@@ -90,4 +90,18 @@ class UsuarioDAO {
         }
     }
 
+    public function masReciente() {
+        try {
+            $stm = $this->pdo->prepare("SELECT    id_usuario, nombre, apellidos, dni, fec_nac, telefono, email
+                                        FROM      usuarios
+                                        ORDER BY  id_usuario DESC
+                                        LIMIT     1;");
+
+            $stm->execute();
+            return $stm->fetchObject("Usuario");
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
 }
