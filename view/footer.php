@@ -1,13 +1,13 @@
             <!-- FOOTER -->
-            <footer class="transparent footer bd-footer p-3 p-md-2 mt-5 text-left text-sm-start text-md-start">
+            <footer class="transparent footer bd-footer p-1 p-md-2 mt-5 text-left text-sm-start text-md-start">
                 <div class="container">
-                    <ul class="bd-booter-links ps-0 mb-3">
+                    <ul class="bd-booter-links ps-0 mb-1">
                         <li class="d-inline-block">
-                            <a class="text-light" href="#">Contacto</a>
+                            <a class="text-light" href="mailto:info@sunsetsurf.com">Contacto</a>
                         </li>
                         <div class="float-xl-right float-right float-sm-right text-light">
                             © Copyright
-                        </div>                        
+                        </div>
                     </ul>
                 </div>
             </footer>

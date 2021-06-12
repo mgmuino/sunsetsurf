@@ -6,8 +6,8 @@
  *  
  */
 
-require_once 'bd/conexion.php';
-require_once 'model/entidades/cliente.php';
+require_once '../bd/conexion.php';
+require_once '../model/entidades/cliente.php';
 
 class ClienteDAO {
 
@@ -31,7 +31,7 @@ class ClienteDAO {
                                         INNER JOIN contactos_emergencia ON clientes.id_contacto_emerg=contactos_emergencia.id_contacto");
             $stm->execute();
 
-            return $stm->fetchAll(PDO::FETCH_CLASS, 'Cliente');
+            return $stm->fetchAll();
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -83,13 +83,13 @@ class ClienteDAO {
 
     public function registrar(Cliente $cliente) {
         try {
-            $sql = "INSERT INTO clientes (num_clases, id_contacto_emerg) 
-		        VALUES (?, ?)";
+            $sql = "INSERT INTO clientes (id_cliente, num_clases, id_contacto_emerg) 
+		        VALUES (?, 0, ?)";
 
             $this->pdo->prepare($sql)
                     ->execute(
                             array(
-                                $cliente->getNum_clases(),
+                                $cliente->getId_cliente(),
                                 $cliente->getId_contacto_emerg()
                             )
             );

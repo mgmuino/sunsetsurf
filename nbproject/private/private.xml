@@ -3,13 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/sunsetsurf/view/indexview.php</file>
-            <file>file:/C:/xampp/htdocs/sunsetsurf/model/clienteDAO.php</file>
-            <file>file:/C:/xampp/htdocs/sunsetsurf/model/monitorDAO.php</file>
-            <file>file:/C:/xampp/htdocs/sunsetsurf/public/assets/css/style.css</file>
-            <file>file:/C:/xampp/htdocs/sunsetsurf/view/header.php</file>
-            <file>file:/C:/xampp/htdocs/sunsetsurf/view/footer.php</file>
-            <file>file:/C:/xampp/htdocs/sunsetsurf/model/contactoDAO.php</file>
+            <file>file:/C:/xampp/htdocs/sunsetsurf/public/index.php</file>
+            <file>file:/C:/xampp/htdocs/sunsetsurf/view/clases.php</file>
         </group>
     </open-files>
 </project-private>

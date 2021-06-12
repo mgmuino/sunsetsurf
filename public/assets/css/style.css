@@ -1,5 +1,3 @@
-
-
 .footer {
     position: fixed;
     left: 0;
@@ -10,7 +8,7 @@
 }
 
 .transparent {
-    background-color: rgba(39, 20, 13, 0.6);
+    background-color: rgba(66, 66, 66, 0.473);
 }
 
 #myVideo {
@@ -19,4 +17,11 @@
     bottom: 0;
     min-width: 100%;
     min-height: 100%;
-  }
+}
+
+.content {
+    position: relative;
+    bottom: 0;
+    color: #f1f1f1;
+    padding: 10px;
+}

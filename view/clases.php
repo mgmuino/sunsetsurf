@@ -1,56 +1,62 @@
-<section>
-        <div class="row my-5">
-            <div class="container">
-                <div class="card">
-                    <div class="card-body">
-                        <h2>ORDENADORES DE SOBREMESA</h2>
-                    </div>
-                </div>
-                <!-- 1 -->
-                <div class="card-group">
-                    <div class="card ">
-                        <img class="card-img-top img-fluid" src="images/sobremesa1.PNG" alt="AUSSAR OFIMATICO 2020 APU"
-                            data-toggle="modal" data-target="#exampleModal" data-slide-to="0">
-                        <div class="card-body">
-                            <h4 class="card-title">AUSSAR OFIMATICO 2020 APU</h4>
-                            <p class="card-text">
-                                Excelente APU AMD RYZEN5 con 8gb de ram + ssd m.2 para cualquier tipo de uso ofimatico,
-                                htpc, gaming a calidades medias...
-                            </p>
-                            <a href="detalle.html" class="btn btn-info">Detalles</a>
-                        </div>
-                    </div>
-                    <!-- 2 -->
-                    <div class="card ">
-                        <img class="card-img-top img-fluid" src="images/sobremesa2.PNG" alt="Asrock DeskMini X300"
-                            data-toggle="modal" data-target="#exampleModal" data-slide-to="1">
-                        <div class="card-body">
-                            <h4 class="card-title">Asrock DeskMini X300</h4>
-                            <p class="card-text">
-                                Excelente Asrock DeskMini X300 con 8gb de ram + ssd m.2 para cualquier tipo de uso
-                                ofimatico,
-                                htpc, gaming a calidades medias...
-                            </p>
-                            <a href="detalle.html" class="btn btn-info">Detalles</a>
-                        </div>
-                    </div>
-                    <!-- 3 -->
-                    <div class="card ">
-                        <img class="card-img-top img-fluid" src="images/sobremesa3.PNG"
-                            alt="MSI E-ATX MPG SEKIRA 500P NEGRO" data-toggle="modal" data-target="#exampleModal"
-                            data-slide-to="2">
-                        <div class="card-body">
-                            <h4 class="card-title">MSI E-ATX MPG SEKIRA 500P NEGRO</h4>
-                            <p class="card-text">
-                                El MPG SEKIRA 500P es un chasis de juego innovador, refinado y personalizable que se
-                                inspiró en el Hacha de Perun, el dios más poderoso y supremo del Panteón. La
-                                construcción robusta y los bordes definidos reflejan perfectamente el poder del hacha de
-                                Perun.
-                            </p>
-                            <a href="detalle.html" class="btn btn-info">Detalles</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+<div class="transparent d-flex justify-content-center content mt-2 mb-2">
+    <h2>Clases de Surf</h2>
+</div>
+<div class="card-deck">
+    <div class="transparent card text-light">
+        <img class="card-img-top" src="../public/assets/images/bautismo-card.jpg" alt="bautismo">
+        <div class="card-body">
+            <h5 class="card-title">BAUTISMO</h5>
+            <p class="card-text">La clase de surf perfecta para niños de 6 a 8 años que quieren coger su primera ola. Una clase reducida e individualizada para garantizar la seguridad en el agua.</p>
+            <a href="?c=cliente&a=editar" class="btn btn-info">Reservar</a>
         </div>
+        <ul class="list-group list-group-flush">
+            <li class="transparent list-group-item">1 Clase - 30€</li>
+            <li class="transparent list-group-item">2 Clases - 55€</li>
+            <li class="transparent list-group-item">4 Clases - 70€</li>
+            <li class="transparent list-group-item">8 Clases - 120€</li>
+        </ul>
+    </div>
+    <div class="transparent card text-light">
+        <img class="card-img-top" src="../public/assets/images/iniciacion-card.jpg" alt="iniciacion">
+        <div class="card-body">
+            <h5 class="card-title">INICIACIÓN</h5>
+            <p class="card-text">Clases grupales tanto para niños como para adultos que quieren iniciarse en la práctica del surf y mejorar su condición física disfrutando de las olas.</p>
+            <a href="?c=cliente&a=editar" class="btn btn-info">Reservar</a>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="transparent list-group-item">1 Clase - 30€</li>
+            <li class="transparent list-group-item">2 Clases - 55€</li>
+            <li class="transparent list-group-item">4 Clases - 70€</li>
+            <li class="transparent list-group-item">8 Clases - 120€</li>
+        </ul>
+    </div>
+    <div class="transparent card text-light">
+        <img class="card-img-top" src="../public/assets/images/perfeccionamiento-card.jpg" alt="perfeccionamiento">
+        <div class="card-body">
+            <h5 class="card-title">PERFECCIONAMIENTO</h5>
+            <p class="card-text">Las clases de perfeccionamiento para niños y adultos son un paso más para mejorar tu técnica en la práctica del surf.</p>
+            <a href="?c=cliente&a=editar" class="btn btn-info">Reservar</a>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="transparent list-group-item">1 Clase - 30€</li>
+            <li class="transparent list-group-item">2 Clases - 55€</li>
+            <li class="transparent list-group-item">4 Clases - 70€</li>
+            <li class="transparent list-group-item">8 Clases - 120€</li>
+        </ul>
+    </div>
+    <div class="transparent card text-light">
+        <img class="card-img-top" src="../public/assets/images/tecnificacion-card.jpg" alt="tecnificacion">
+        <div class="card-body">
+            <h5 class="card-title">TECNIFICACIÓN</h5>
+            <p class="card-text">En las clases de tecnificación de Sunset Surf buscamos las mejores condiciones de oleaje para surfear en las mejores playas.</p>
+            <a href="?c=cliente&a=editar" class="btn btn-info">Reservar</a>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="transparent list-group-item">1 Clase - 30€</li>
+            <li class="transparent list-group-item">2 Clases - 55€</li>
+            <li class="transparent list-group-item">4 Clases - 70€</li>
+            <li class="transparent list-group-item">8 Clases - 120€</li>
+        </ul>
+    </div>
+</div>
+</div>

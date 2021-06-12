@@ -3,7 +3,8 @@
 class Conexion {
 
     private static $dbName = 'sunsetsurf';
-    private static $dbHost = 'localhost';
+    private static $dbHost = '127.0.0.1';
+    private static $dbPort = '3307';
     private static $dbUsername = 'root';
     private static $dbUserPassword = '';
     private static $cont = null;
@@ -15,7 +16,7 @@ class Conexion {
     public static function connect() {
         if (null == self::$cont) {
             try {
-                self::$cont = new PDO("mysql:host=" . self::$dbHost . ";" . "dbname=" . self::$dbName, self::$dbUsername, self::$dbUserPassword);
+                self::$cont = new PDO("mysql:host=" . self::$dbHost . ";port=" . self::$dbPort . ";dbname=" . self::$dbName, self::$dbUsername, self::$dbUserPassword);
             } catch (PDOException $e) {
                 die($e->getMessage());
             }

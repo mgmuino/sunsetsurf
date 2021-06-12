@@ -1,7 +1,7 @@
 <?php
 
-require_once 'bd/conexion.php';
-require_once 'model/entidades/contacto_emergencia.php';
+require_once '../bd/conexion.php';
+require_once '../model/entidades/contacto_emergencia.php';
 
 class ContactoDAO {
 
@@ -10,6 +10,20 @@ class ContactoDAO {
     public function __construct() {
         try {
             $this->pdo = Conexion::connect();
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function obtener($id) {
+        try {
+            $stm = $this->pdo->prepare("SELECT id_contacto, nombre1, descripcion1, telefono1, nombre2, descripcion2, telefono2 
+                                        FROM contactos_emergencia 
+                                        WHERE id_contacto = ?");
+
+
+            $stm->execute(array($id));
+            return $stm->fetchObject("Contacto_emergencia");
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -55,7 +69,7 @@ class ContactoDAO {
 
     public function registrar(Contacto_emergencia $contacto_emergencia) {
         try {
-            $sql = "INSERT INTO contactos_emergencia (nombre1, descripcion1, telefono1, nombre2, descripcion2, telefono2,) 
+            $sql = "INSERT INTO contactos_emergencia (nombre1, descripcion1, telefono1, nombre2, descripcion2, telefono2) 
 		        VALUES (?, ?, ?, ?, ?, ?)";
 
             $this->pdo->prepare($sql)

@@ -39,6 +39,14 @@ if (!isset($_REQUEST['c'])) {
     require_once '../view/header.php';
     require_once '../view/indexview.php';
     require_once '../view/footer.php';
+} else if ($_REQUEST['c'] == 'frontclases') {
+    require_once '../view/header.php';
+    require_once '../view/clases.php';
+    require_once '../view/footer.php';
+} else if ($_REQUEST['c'] == 'frontalquileres') {
+    require_once '../view/header.php';
+    require_once '../view/alquileres.php';
+    require_once '../view/footer.php';
 } else {
     // Obtenemos el controlador que queremos cargar
     $controller = strtolower($_REQUEST['c']);
