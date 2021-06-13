@@ -60,7 +60,9 @@ class UsuarioDAO {
                                 $usuario->getDni(),
                                 $usuario->getFec_nac(),
                                 $usuario->getTelefono(),
-                                $usuario->getPassword()
+                                $usuario->getEmail(),
+                                $usuario->getPassword(),
+                                $usuario->getId_usuario()
                             )
             );
         } catch (Exception $e) {
@@ -71,7 +73,7 @@ class UsuarioDAO {
     public function registrar(Usuario $usuario) {
         try {
             $sql = "INSERT INTO usuarios (nombre, apellidos, dni, fec_nac, telefono, email, password) 
-		        VALUES (?, ?, ?, ?, ?, ?, MD5(?))";
+		        VALUES (?, ?, ?, ?, ?, ?, ?);";
 
             $this->pdo->prepare($sql)
                     ->execute(
@@ -82,7 +84,7 @@ class UsuarioDAO {
                                 $usuario->getFec_nac(),
                                 $usuario->getTelefono(),
                                 $usuario->getEmail(),
-                                $usuario->getPassword()
+                                password_hash($usuario->getPassword(), PASSWORD_DEFAULT)
                             )
             );
         } catch (Exception $e) {
@@ -104,4 +106,41 @@ class UsuarioDAO {
         }
     }
 
+    public function autenticar($user, $password) {
+        try {
+            $stm = $this->pdo->prepare("SELECT * 
+                                        FROM usuarios 
+                                        WHERE (dni = ? || email = ?);");
+
+            $stm->execute(array($user, $user));
+            $resultuser = $stm->fetch();
+            
+            if ($resultuser && password_verify($password, $resultuser['password'])) {
+                echo "valid!";
+                echo $password;
+                echo $resultuser['password'];
+                return true;
+            } else {
+                echo "invalid";
+                echo $password;
+                echo $resultuser['password'];
+                return false;
+            }
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+    public function getUserid($user) {
+        try {
+            $stm = $this->pdo->prepare("SELECT id_usuario 
+                                        FROM usuarios 
+                                        WHERE (dni = ? || email = ?);");
+
+            $stm->execute(array($user, $user));
+            $resultuser = $stm->fetch();
+             return $resultuser;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
 }

@@ -76,6 +76,7 @@ class ClienteController {
         //Creacion o Actualizacion de contacto
         $cont = new Contacto_emergencia();
         
+        $cont->setId_contacto($id_contacto);
         $cont->setNombre1($nombre1);
         $cont->setDescripcion1($descripcion1);
         $cont->setTelefono1($telefono1);
@@ -88,6 +89,7 @@ class ClienteController {
         //Creacion o Actualizacion de usuario
         $usu = new Usuario();
         
+        $usu->setId_usuario($id);
         $usu->setNombre($nombre);
         $usu->setApellidos($apellidos);
         $usu->setDni($dni);

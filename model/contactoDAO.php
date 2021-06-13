@@ -43,7 +43,7 @@ class ContactoDAO {
         try {
             $sql = "UPDATE contactos_emergencia
                     SET 
-                        nombre1          =?, 
+                        nombre1          =?,
                         descripcion1     =?,
                         telefono1        =?,
                         nombre2          =?, 
@@ -59,7 +59,8 @@ class ContactoDAO {
                                 $contacto_emergencia->getTelefono1(),
                                 $contacto_emergencia->getNombre2(),
                                 $contacto_emergencia->getDescripcion2(),
-                                $contacto_emergencia->getTelefono2()
+                                $contacto_emergencia->getTelefono2(),
+                                $contacto_emergencia->getId_contacto()
                             )
             );
         } catch (Exception $e) {

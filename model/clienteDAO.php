@@ -98,4 +98,19 @@ class ClienteDAO {
         }
     }
 
+    public function getUserid($user) {
+        try {
+            $stm = $this->pdo->prepare("SELECT id_cliente 
+                                        FROM clientes 
+                                        INNER JOIN usuarios ON clientes.id_cliente=usuarios.id_usuario
+                                        WHERE (dni = ? || email = ?);");
+
+            $stm->execute(array($user, $user));
+            $resultuser = $stm->fetch();
+            return $resultuser;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
 }

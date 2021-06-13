@@ -27,7 +27,7 @@ class MonitorDAO {
 
             $stm = $this->pdo->prepare("SELECT id_monitor, nombre, apellidos, dni, fec_nac, telefono, email, num_titulo, cert_delitos
                                         FROM monitores
-                                        INNER JOIN monitores ON monitores.id_monitor=monitores.id_monitor");
+                                        INNER JOIN usuarios ON monitores.id_monitor=usuarios.id_usuario");
             $stm->execute();
 
             return $stm->fetchAll(PDO::FETCH_CLASS, 'Monitor');
@@ -40,7 +40,7 @@ class MonitorDAO {
         try {
             $stm = $this->pdo->prepare("SELECT id_monitor, nombre, apellidos, dni, fec_nac, telefono, email, num_titulo, cert_delitos 
                                         FROM monitores 
-                                        INNER JOIN monitores ON monitores.id_monitor=monitores.id_monitor
+                                        INNER JOIN usuarios ON monitores.id_monitor=usuarios.id_usuario
                                         WHERE id_monitor = ?");
 
 
@@ -93,6 +93,21 @@ class MonitorDAO {
                                 $monitor->getCert_delitos()
                             )
             );
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function getUserid($user) {
+        try {
+            $stm = $this->pdo->prepare("SELECT id_monitor 
+                                        FROM monitores 
+                                        INNER JOIN usuarios ON monitores.id_monitor=usuarios.id_usuario
+                                        WHERE (dni = ? || email = ?);");
+
+            $stm->execute(array($user, $user));
+            $resultuser = $stm->fetch();
+            return $resultuser;
         } catch (Exception $e) {
             die($e->getMessage());
         }

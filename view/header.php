@@ -13,6 +13,9 @@
     <!-- Custom styles -->
     <link href="../public/assets/css/style.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" type="images/png" href="../public/assets/images/icon.png" />
+
+    <!-- Custom js -->
+    <script type="text/javascript" src="../public/assets/js/main.js" charset="utf-8"></script>
 </head>
 
 <body>
@@ -45,9 +48,9 @@
                         </li>
                     </ul>
 
-                    <form class="form-inline my-2 my-lg-0" id="formlogin" action="action_page.php" method="POST" enctype="application/x-www-form-urlencoded" accept-charset="UTF-8">
+                    <form class="form-inline my-2 my-lg-0" id="formlogin" action="?c=login&a=autenticar"  style="display:flex" method="POST" enctype="application/x-www-form-urlencoded" accept-charset="UTF-8">
                         <div class="form-group">
-                            <input class="form-control mr-sm-2 mb-sm-2" type="email" name="correo" placeholder="Correo" required>
+                            <input class="form-control mr-sm-2 mb-sm-2" type="text" name="user" placeholder="Correo/Dni" required>
                         </div>
                         <div class="form-group">
                             <input class="form-control mr-sm-2 mb-sm-2" type="password" name="password" placeholder="Contraseña" required>
@@ -56,8 +59,8 @@
                             <button type="submit" class="btn btn-primary mr-sm-2 mb-sm-2">Entrar</button>
                             <a href="?c=cliente&a=editar" class="btn btn-primary mr-sm-2 mb-sm-2">Registrarse</a>
                         </div>
-
                     </form>
+                    <a id="btnlogout" href="?c=login&a=logout" onclick="logout()" class="btn btn-danger mr-sm-2 mb-sm-2" style="display:none">Logout</a>
                 </div>
                 <audio controls class="float-xl-right float-right float-sm-right mr-sm-4">
                     <source src="../public/assets/media/waves-sound.mp3" type="audio/mpeg">
