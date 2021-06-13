@@ -1,7 +1,7 @@
 <div class="transparent d-flex justify-content-center content mt-2 mb-2">
     <h2>Clases de Surf</h2>
 </div>
-<div class="card-deck">
+<div class="card-deck mb-5">
     <div class="transparent card text-light">
         <img class="card-img-top" src="../public/assets/images/bautismo-card.jpg" alt="bautismo">
         <div class="card-body">

@@ -25,7 +25,7 @@ class ClienteDAO {
         try {
             $result = array();
 
-            $stm = $this->pdo->prepare("SELECT id_cliente, nombre, apellidos, dni, fec_nac, telefono, email, num_clases, descripcion1, nombre1, telefono1, descripcion2, nombre2, telefono2
+            $stm = $this->pdo->prepare("SELECT id_cliente, nombre, apellidos, dni, fec_nac, telefono, email, num_clases, id_contacto_emerg, nombre1, descripcion1, telefono1, nombre2, descripcion2, telefono2
                                         FROM clientes
                                         INNER JOIN usuarios ON clientes.id_cliente=usuarios.id_usuario
                                         INNER JOIN contactos_emergencia ON clientes.id_contacto_emerg=contactos_emergencia.id_contacto");

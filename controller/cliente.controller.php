@@ -112,9 +112,11 @@ class ClienteController {
     }
 
     public function eliminar() {
-        $this->modelusuario->eliminar($_REQUEST['id_usuario']);
-        $this->modelcontacto->eliminar($_REQUEST['id_contacto_emerg']);
-        header('Location: index.php');
+        $this->modelusuario->eliminar($_REQUEST['id']);
+        $this->modelcontacto->eliminar($_REQUEST['id_contacto']);
+        require_once '../view/header.php';
+        require_once '../view/monitor/monitor-index.php';
+        require_once '../view/footer.php';
     }
 
 }

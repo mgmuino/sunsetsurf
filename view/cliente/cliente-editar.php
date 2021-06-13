@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center mb-5">
     <div class="card-deck mt-5">
         <div class="transparent card text-light">
             <div class="card-body">

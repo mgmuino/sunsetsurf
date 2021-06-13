@@ -1,4 +1,4 @@
-<div id="demo" class="container carousel slide mt-5" data-ride="carousel">
+<div id="demo" class="container carousel slide mt-5 mb-5" data-ride="carousel">
 
     <!-- The slideshow -->
     <div class="carousel-inner transparent text-center text-light mt-5">

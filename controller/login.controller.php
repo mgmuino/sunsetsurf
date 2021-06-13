@@ -50,12 +50,12 @@ class LoginController {
         if ($this->modelusuario->autenticar($user, $password) && ($id_cliente['id_cliente'] == $id_usuario['id_usuario'])) {
             echo "<script>alert('Usuario valido');</script>";
             require_once '../view/header.php';
-            require_once '../view/cliente/cliente.php';
+            require_once '../view/cliente/cliente-index.php';
             require_once '../view/footer.php';
         } else if ($this->modelusuario->autenticar($user, $password) && ($id_monitor['id_monitor'] == $id_usuario['id_usuario'])) {
             echo "<script>alert('Usuario valido');</script>";
             require_once '../view/header.php';
-            require_once '../view/monitor/monitor.php';
+            require_once '../view/monitor/monitor-index.php';
             require_once '../view/footer.php';
         } else {
             echo "<script>alert('Usuario no valido');</script>";

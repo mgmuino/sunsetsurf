@@ -1,7 +1,7 @@
 <div class="transparent d-flex justify-content-center content mt-2 mb-2">
     <h2>Alquileres</h2>
 </div>
-<div class="d-flex justify-content-center container">
+<div class="d-flex justify-content-center container mb-5">
     <div class="card-deck">
         <div class="transparent card text-light" style="width: 30rem;">
             <img class="card-img-top" src="../public/assets/images/tabla-blanda.jpg" alt="tabla blanda">
