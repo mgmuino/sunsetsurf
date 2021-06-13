@@ -73,7 +73,7 @@ class UsuarioDAO {
     public function registrar(Usuario $usuario) {
         try {
             $sql = "INSERT INTO usuarios (nombre, apellidos, dni, fec_nac, telefono, email, password) 
-		        VALUES (?, ?, ?, ?, ?, ?, ?);";
+		        VALUES (?, ?, ?, ?, ?, ?, SHA1(?));";
 
             $this->pdo->prepare($sql)
                     ->execute(
@@ -84,7 +84,7 @@ class UsuarioDAO {
                                 $usuario->getFec_nac(),
                                 $usuario->getTelefono(),
                                 $usuario->getEmail(),
-                                password_hash($usuario->getPassword(), PASSWORD_DEFAULT)
+                                $usuario->getPassword()
                             )
             );
         } catch (Exception $e) {
@@ -110,20 +110,20 @@ class UsuarioDAO {
         try {
             $stm = $this->pdo->prepare("SELECT * 
                                         FROM usuarios 
-                                        WHERE (dni = ? || email = ?);");
+                                        WHERE (dni = ? || email = ?) AND password = SHA1(?);");
 
-            $stm->execute(array($user, $user));
+            $stm->execute(array($user, $user, $password));
             $resultuser = $stm->fetch();
             
-            if ($resultuser && password_verify($password, $resultuser['password'])) {
-                echo "valid!";
-                echo $password;
-                echo $resultuser['password'];
+            if ($resultuser) {
+//                echo "valid!";
+//                echo $password;
+//                echo $resultuser['password'];
                 return true;
             } else {
-                echo "invalid";
-                echo $password;
-                echo $resultuser['password'];
+//                echo "invalid";
+//                echo $password;
+//                echo $resultuser['password'];
                 return false;
             }
         } catch (Exception $e) {
@@ -137,7 +137,7 @@ class UsuarioDAO {
                                         WHERE (dni = ? || email = ?);");
 
             $stm->execute(array($user, $user));
-            $resultuser = $stm->fetch();
+            $resultuser = $stm->fetch(PDO::FETCH_ASSOC);
              return $resultuser;
         } catch (Exception $e) {
             die($e->getMessage());

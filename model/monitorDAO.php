@@ -106,7 +106,7 @@ class MonitorDAO {
                                         WHERE (dni = ? || email = ?);");
 
             $stm->execute(array($user, $user));
-            $resultuser = $stm->fetch();
+            $resultuser = $stm->fetch(PDO::FETCH_ASSOC);
             return $resultuser;
         } catch (Exception $e) {
             die($e->getMessage());
