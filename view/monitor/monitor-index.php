@@ -15,7 +15,7 @@
     <!-- LISTADO DE CLIENTES  -->
     <div class="tab-content">
         <div id="lista_clientes" class="transparent tab-pane active table-responsive"><br>
-        <h3 class="ml-3">Listado de clientes</h3>
+            <h3 class="ml-3">Listado de clientes</h3>
             <table class="table table-striped text-light text-left">
                 <thead class="thead-dark">
                     <tr>
@@ -61,18 +61,37 @@
                 </tbody>
             </table>
         </div>
-        <!-- COMENTARIOS -->
-        <div id="gestion_clases" class="container tab-pane fade"><br>
-            <h3>Comentarios</h3>
-            <ul class="list-group">
-                <li class="list-group-item">1. Buena compra y buena relacion calidad precio. </li>
-                <li class="list-group-item">2. No me llego a tiempo el pedido y tuve que reclamar, eso
-                    si me
-                    solucionaron todo y ahora estoy super contento con mi ordenador nuevo. </li>
-                <li class="list-group-item">3. Me falla el conector de sonido, lo he devuelto. </li>
-                <li class="list-group-item">4. Es compatible con la placa ASUS z150???.</li>
-            </ul>
-
+        <!-- GESTION DE CLASES -->
+        <div id="gestion_clases" class="transparent tab-pane table-responsive"><br>
+            <h3 class="ml-3">Gestion de clases</h3>
+            <table class="table table-striped text-light text-left">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Id monitor</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Lugar</th>
+                        <th scope="col">Asistentes</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (count($fetchallclases) > 0) {
+                        foreach ($fetchallclases as $r) : ?>
+                            <tr>
+                                <td scope="row"><?php echo $r['nombre_tipo']; ?></td>
+                                <td><?php echo $r['id_monitor']; ?></td>
+                                <td><?php echo $r['fecha']; ?></td>
+                                <td><?php echo $r['lugar']; ?></td>
+                                <td><?php echo $r['asistentes']; ?></td>
+                                <td>
+                                    <a class="btn btn-danger mr-sm-2 mb-sm-2" onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?c=Monitor&a=eliminarclase&id=<?php echo $r['id_clase']; ?>">Eliminar</a>
+                                </td>
+                            </tr>
+                    <?php endforeach;
+                    } ?>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

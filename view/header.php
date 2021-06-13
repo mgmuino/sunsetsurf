@@ -48,7 +48,7 @@
                         </li>
                     </ul>
 
-                    <form class="form-inline my-2 my-lg-0" id="formlogin" action="?c=login&a=autenticar"  style="display:flex" method="POST" enctype="application/x-www-form-urlencoded" accept-charset="UTF-8">
+                    <form class="form-inline my-2 my-lg-0" id="formlogin" action="?c=login&a=autenticar" style="display:flex" method="POST" enctype="application/x-www-form-urlencoded" accept-charset="UTF-8">
                         <div class="form-group">
                             <input class="form-control mr-sm-2 mb-sm-2" type="text" name="user" placeholder="Correo/Dni" required>
                         </div>

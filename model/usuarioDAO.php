@@ -137,7 +137,7 @@ class UsuarioDAO {
                                         WHERE (dni = ? || email = ?);");
 
             $stm->execute(array($user, $user));
-            $resultuser = $stm->fetch(PDO::FETCH_ASSOC);
+            $resultuser = $stm->fetchObject("Usuario");
              return $resultuser;
         } catch (Exception $e) {
             die($e->getMessage());

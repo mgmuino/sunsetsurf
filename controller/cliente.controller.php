@@ -3,9 +3,11 @@
 require_once '../model/entidades/usuario.php';
 require_once '../model/entidades/cliente.php';
 require_once '../model/entidades/contacto_emergencia.php';
+require_once '../model/entidades/clase.php';
 require_once '../model/usuarioDAO.php';
 require_once '../model/clienteDAO.php';
 require_once '../model/contactoDAO.php';
+require_once '../model/claseDAO.php';
 
 
 /*
@@ -23,17 +25,30 @@ class ClienteController {
 
     private $modelusuario; //Representa las operaciones de BD para el usuario.
     private $modelcontacto; //Representa las operaciones de BD para el contacto.
-    private $modelcliente; //Representa las operaciones de BD para el cliente.  
+    private $modelcliente; //Representa las operaciones de BD para el cliente.
+    private $modelclase; //Representa las operaciones de BD para las clases.
 
     public function __construct() {
         $this->modelusuario = new UsuarioDAO();
         $this->modelcontacto = new ContactoDAO();
         $this->modelcliente = new ClienteDAO();
+        $this->modelclase = new ClaseDAO();
     }
 
     public function index() {
+        $cli = new Cliente();
+        $usu = new Usuario();
+        $cont = new Contacto_emergencia();
+        
+        $this->modelclase->listar() != false ? $fetchallclases = $this->modelclase->listar() : $fetchallclases = array();
+        
+        if (isset($_REQUEST['id']) && isset($_REQUEST['id_contacto'])) {
+            $cli = $this->modelcliente->obtener($_REQUEST['id']);  //Al DAO le solicitamos recuperar un cliente.
+            $usu = $this->modelusuario->obtener($_REQUEST['id']);  //Al DAO le solicitamos recuperar un usuario.
+            $cont = $this->modelcontacto->obtener($_REQUEST['id_contacto']);  //Al DAO le solicitamos recuperar un contacto.            
+        }
         require_once '../view/header.php';
-        require_once '../view/cliente/cliente.php';
+        require_once '../view/cliente/cliente-index.php';
         require_once '../view/footer.php';
     }
 
@@ -75,7 +90,7 @@ class ClienteController {
 
         //Creacion o Actualizacion de contacto
         $cont = new Contacto_emergencia();
-        
+
         $cont->setId_contacto($id_contacto);
         $cont->setNombre1($nombre1);
         $cont->setDescripcion1($descripcion1);
@@ -88,7 +103,7 @@ class ClienteController {
 
         //Creacion o Actualizacion de usuario
         $usu = new Usuario();
-        
+
         $usu->setId_usuario($id);
         $usu->setNombre($nombre);
         $usu->setApellidos($apellidos);
@@ -102,7 +117,7 @@ class ClienteController {
             $this->modelusuario->actualizar($usu);
         } else {
             $this->modelusuario->registrar($usu);
-            
+
             $cli = new Cliente();
             $cli->setId_cliente($this->modelusuario->masReciente()->getId_usuario());
             $cli->setId_contacto_emerg($this->modelcontacto->masReciente()->getId_contacto());

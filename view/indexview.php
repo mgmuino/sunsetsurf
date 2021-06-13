@@ -1,4 +1,4 @@
-<div id="demo" class="container carousel slide mt-5 mb-5" data-ride="carousel">
+<div id="carouselindex" class="container carousel slide mt-5 mb-5" data-ride="carousel">
 
     <!-- The slideshow -->
     <div class="carousel-inner transparent text-center text-light mt-5">
@@ -18,10 +18,10 @@
     </div>
 
     <!-- Left and right controls -->
-    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <a class="carousel-control-prev" href="#carouselindex" data-slide="prev">
         <span class="carousel-control-prev-icon"></span>
     </a>
-    <a class="carousel-control-next" href="#demo" data-slide="next">
+    <a class="carousel-control-next" href="#carouselindex" data-slide="next">
         <span class="carousel-control-next-icon"></span>
     </a>
 

@@ -26,12 +26,10 @@ class ClaseDAO {
             $result = array();
 
             $stm = $this->pdo->prepare("SELECT id_clase, nombre_tipo, id_monitor, fecha, lugar, asistentes
-                                        FROM clases
-                                        INNER JOIN monitores ON clases.id_monitor=monitores.id_monitor
-                                        INNER JOIN tipos_clase ON clases.nombre_tipo=tipos_clase.nombre_tipo");
+                                        FROM clases");
             $stm->execute();
 
-            return $stm->fetchAll(PDO::FETCH_CLASS, 'Clase');
+            return $stm->fetchAll();
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -40,9 +38,7 @@ class ClaseDAO {
     public function obtener($id) {
         try {
             $stm = $this->pdo->prepare("SELECT id_clase, nombre_tipo, id_monitor, fecha, lugar, asistentes
-                                        FROM clases 
-                                        INNER JOIN monitores ON clases.id_monitor=monitores.id_monitor
-                                        INNER JOIN tipos_clase ON clases.nombre_tipo=tipos_clase.nombre_tipo
+                                        FROM clases
                                         WHERE id_clase = ?");
 
 
