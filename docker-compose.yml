@@ -18,7 +18,7 @@ services:
            - "3306:3306"
         # Copiado de la base de datos en nuestro contenedor de mysql
         volumes:
-            - ./sunsetsurf_src/bd/sunsetsurf.sql:/docker-entrypoint-initdb.d/sunsetsurf.sql
+            - ./sunsetsurf/bd/sunsetsurf.sql:/docker-entrypoint-initdb.d/sunsetsurf.sql
         # Network asociada al contenedor
         networks:
             - mynet
@@ -28,7 +28,7 @@ services:
         restart: always
         # Carpeta montada en el sistema que contendra el codigo de la aplicacion
         volumes:
-            - ./sunsetsurf_src:/var/www/html
+            - ./sunsetsurf:/var/www/html
         expose:
             - 80
         ports:
