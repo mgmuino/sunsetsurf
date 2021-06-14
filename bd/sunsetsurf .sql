@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-06-2021 a las 17:50:12
--- Versión del servidor: 10.4.18-MariaDB
--- Versión de PHP: 8.0.3
+-- Tiempo de generación: 13-06-2021 a las 22:25:01
+-- Versión del servidor: 10.4.19-MariaDB
+-- Versión de PHP: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -59,9 +59,18 @@ CREATE TABLE `asist_clientes` (
 CREATE TABLE `bonos` (
   `id_bono` int(11) NOT NULL,
   `precio` int(3) NOT NULL,
-  `dias` int(1) NOT NULL,
   `num_clases` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `bonos`
+--
+
+INSERT INTO `bonos` (`id_bono`, `precio`, `num_clases`) VALUES
+(1, 30, 1),
+(2, 55, 2),
+(3, 70, 4),
+(4, 120, 8);
 
 -- --------------------------------------------------------
 
@@ -78,6 +87,16 @@ CREATE TABLE `clases` (
   `asistentes` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `clases`
+--
+
+INSERT INTO `clases` (`id_clase`, `nombre_tipo`, `id_monitor`, `fecha`, `lugar`, `asistentes`) VALUES
+(1, 'Bautismo', 1, '2021-06-14', 'Bastiagueiro', 3),
+(2, 'Iniciación', 2, '2021-06-15', 'Bastiagueiro', 5),
+(3, 'Perfeccionamiento', 1, '2021-06-18', 'Caion', 6),
+(4, 'Tecnificación', 1, '2021-06-19', 'Sabon', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -89,6 +108,14 @@ CREATE TABLE `clientes` (
   `num_clases` int(11) NOT NULL,
   `id_contacto_emerg` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `clientes`
+--
+
+INSERT INTO `clientes` (`id_cliente`, `num_clases`, `id_contacto_emerg`) VALUES
+(3, 0, 1),
+(4, 0, 2);
 
 -- --------------------------------------------------------
 
@@ -119,6 +146,14 @@ CREATE TABLE `contactos_emergencia` (
   `telefono2` varchar(9) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `contactos_emergencia`
+--
+
+INSERT INTO `contactos_emergencia` (`id_contacto`, `nombre1`, `descripcion1`, `telefono1`, `nombre2`, `descripcion2`, `telefono2`) VALUES
+(1, 'contacto1', 'madre', '333333333', 'contacto2', 'padre', '333333333'),
+(2, 'contacto1', 'padre', '444444444', '', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -129,9 +164,26 @@ CREATE TABLE `material` (
   `id_material` int(11) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `marca` varchar(30) NOT NULL,
-  `talla` varchar(1) NOT NULL,
+  `descripcion` varchar(30) NOT NULL,
   `id_tarifa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `material`
+--
+
+INSERT INTO `material` (`id_material`, `nombre`, `marca`, `descripcion`, `id_tarifa`) VALUES
+(1, 'Tabla de surf blanda', 'Up', '8\'', 1),
+(2, 'Tabla de surf blanda', 'Up', '6\'', 1),
+(3, 'Tabla de surf blanda', 'Up', '7\'', 1),
+(4, 'Neopreno', 'Rip Curl', 'L', 2),
+(5, 'Neopreno', 'Rip Curl', 'M', 2),
+(6, 'Neopreno', 'Rip Curl', 'S', 2),
+(7, 'Neopreno', 'Rip Curl', 'XS', 2),
+(8, 'Neopreno', 'Rip Curl', 'XL', 2),
+(9, 'Tabla de surf blanda', 'Up', '7\'', 1),
+(10, 'Tabla de surf blanda', 'Up', '7\'', 1),
+(11, 'Tabla de surf blanda', 'Up', '7\'', 1);
 
 -- --------------------------------------------------------
 
@@ -145,6 +197,14 @@ CREATE TABLE `monitores` (
   `cert_delitos` varchar(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `monitores`
+--
+
+INSERT INTO `monitores` (`id_monitor`, `num_titulo`, `cert_delitos`) VALUES
+(1, '1', 'si'),
+(2, '2', 'si');
+
 -- --------------------------------------------------------
 
 --
@@ -156,6 +216,14 @@ CREATE TABLE `tarifas_material` (
   `precio` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `tarifas_material`
+--
+
+INSERT INTO `tarifas_material` (`id_tarifa`, `precio`) VALUES
+(1, 10),
+(2, 5);
+
 -- --------------------------------------------------------
 
 --
@@ -166,6 +234,16 @@ CREATE TABLE `tipos_clase` (
   `nombre_tipo` varchar(30) NOT NULL,
   `descripcion` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tipos_clase`
+--
+
+INSERT INTO `tipos_clase` (`nombre_tipo`, `descripcion`) VALUES
+('Bautismo', 'Primer contacto con el surf.'),
+('Iniciación', 'Aprendizaje básico de surf.'),
+('Perfeccionamiento', 'Perfeccionamiento de ese nivel básico aprendido.'),
+('Tecnificación', 'Mejora de técnica avanzada.');
 
 -- --------------------------------------------------------
 
@@ -181,8 +259,18 @@ CREATE TABLE `usuarios` (
   `fec_nac` date NOT NULL,
   `telefono` varchar(9) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `password` varchar(30) NOT NULL
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellidos`, `dni`, `fec_nac`, `telefono`, `email`, `password`) VALUES
+(1, 'monitor1', 'apellidos', '11111111q', '1992-06-10', '111111111', 'monitor1@monitor1.com', '234d3309b86c261aba8db1f878ca00ef57cf0f6c'),
+(2, 'monitor2', 'apellidos', '22222222q', '1992-06-03', '222222222', 'monitor2@monitor2.com', '87125d126c7a98d887865e8fddb1c525b56816dc'),
+(3, 'cliente1', 'apellidos', '33333333q', '2009-06-10', '333333333', 'cliente1@cliente1.com', '06b8abdc1bed263dcce2f8b6cde6c5189e61e582'),
+(4, 'cliente2', 'apellidos', '44444444q', '2021-06-10', '444444444', 'cliente2@cliente2.com', '4ca688df015ff0ed013fb42e35e07278335c8ebd');
 
 --
 -- Índices para tablas volcadas
@@ -295,19 +383,19 @@ ALTER TABLE `asist_clientes`
 -- AUTO_INCREMENT de la tabla `bonos`
 --
 ALTER TABLE `bonos`
-  MODIFY `id_bono` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_bono` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `clases`
 --
 ALTER TABLE `clases`
-  MODIFY `id_clase` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_clase` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `compras`
@@ -325,25 +413,25 @@ ALTER TABLE `contactos_emergencia`
 -- AUTO_INCREMENT de la tabla `material`
 --
 ALTER TABLE `material`
-  MODIFY `id_material` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_material` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `monitores`
 --
 ALTER TABLE `monitores`
-  MODIFY `id_monitor` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_monitor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `tarifas_material`
 --
 ALTER TABLE `tarifas_material`
-  MODIFY `id_tarifa` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tarifa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas

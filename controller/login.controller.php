@@ -44,8 +44,8 @@ class LoginController {
     }
 
     public function autenticar() {
-        $user = $_REQUEST['user'];
-        $password = $_REQUEST['password'];
+        $user = (isset($_POST['user'])) ? htmlspecialchars(trim(strip_tags($_POST ['user']))) : ""; //Escanpando caracteres 
+        $password = (isset($_POST['password'])) ? htmlspecialchars(trim(strip_tags($_POST ['password']))) : ""; //Escanpando caracteres 
 
         $usu = new Usuario();
         $cli = new Cliente();
@@ -69,11 +69,11 @@ class LoginController {
         } else if ($this->modelusuario->autenticar($user, $password) && ($moni->getId_monitor() == $usu->getId_usuario())) {
             session_start();
             $_SESSION["id_monitor"] = $moni->getId_monitor();
-            $_SESSION["nombre"] = $usu->getNombre();            
+            $_SESSION["nombre"] = $usu->getNombre();
             echo "<script>alert('Bienvenido '" . $_SESSION["nombre"] . "'.');</script>";
             header('Location: ?c=monitor&a=index');
         } else {
-            echo "<script>alert('Usuario no valido');</script>";
+            header('Location: ?c=login&a=index');
         }
     }
 

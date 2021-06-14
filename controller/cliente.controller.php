@@ -39,9 +39,9 @@ class ClienteController {
         $cli = new Cliente();
         $usu = new Usuario();
         $cont = new Contacto_emergencia();
-        
+
         $this->modelclase->listar() != false ? $fetchallclases = $this->modelclase->listar() : $fetchallclases = array();
-        
+
         if (isset($_REQUEST['id']) && isset($_REQUEST['id_contacto'])) {
             $cli = $this->modelcliente->obtener($_REQUEST['id']);  //Al DAO le solicitamos recuperar un cliente.
             $usu = $this->modelusuario->obtener($_REQUEST['id']);  //Al DAO le solicitamos recuperar un usuario.
@@ -71,23 +71,23 @@ class ClienteController {
         /* Para realizar la validación podemos implementarla aquí o llamar a un método que nos recoja los datos del 
           Request y nos devuelva un bool para continuar y redirigir al index o para retornarnos al formulario de edición. */
 
-        //Después de la validación
-        $id = $_REQUEST['id'];
-        $nombre = $_REQUEST['nombre'];
-        $apellidos = $_REQUEST['apellidos'];
-        $dni = $_REQUEST['dni'];
-        $fec_nac = $_REQUEST['fec_nac'];
-        $telefono = $_REQUEST['telefono'];
-        $email = $_REQUEST['email'];
-        $password = $_REQUEST['password'];
-        $id_contacto = $_REQUEST['id_contacto'];
-        $nombre1 = $_REQUEST['nombre1'];
-        $descripcion1 = $_REQUEST['descripcion1'];
-        $telefono1 = $_REQUEST['telefono1'];
-        $nombre2 = $_REQUEST['nombre2'];
-        $descripcion2 = $_REQUEST['descripcion2'];
-        $telefono2 = $_REQUEST['telefono2'];
-
+        //Escapando caracteres
+        $id = (isset($_POST['id'])) ? htmlspecialchars(trim(strip_tags($_POST ['id']))) : "";  
+        $nombre = (isset($_POST['nombre'])) ? htmlspecialchars(trim(strip_tags($_POST ['nombre']))) : ""; 
+        $apellidos = (isset($_POST['apellidos'])) ? htmlspecialchars(trim(strip_tags($_POST ['apellidos']))) : ""; 
+        $dni = (isset($_POST['dni'])) ? htmlspecialchars(trim(strip_tags($_POST ['dni']))) : ""; 
+        $fec_nac = (isset($_POST['fec_nac'])) ? htmlspecialchars(trim(strip_tags($_POST ['fec_nac']))) : ""; 
+        $telefono = (isset($_POST['telefono'])) ? htmlspecialchars(trim(strip_tags($_POST ['telefono']))) : ""; 
+        $email = (isset($_POST['email'])) ? htmlspecialchars(trim(strip_tags($_POST ['email']))) : ""; 
+        $password = (isset($_POST['password'])) ? htmlspecialchars(trim(strip_tags($_POST ['password']))) : ""; 
+        $id_contacto = (isset($_POST['id_contacto'])) ? htmlspecialchars(trim(strip_tags($_POST ['id_contacto']))) : ""; 
+        $nombre1 = (isset($_POST['nombre1'])) ? htmlspecialchars(trim(strip_tags($_POST ['nombre1']))) : ""; 
+        $descripcion1 = (isset($_POST['descripcion1'])) ? htmlspecialchars(trim(strip_tags($_POST ['descripcion1']))) : ""; 
+        $telefono1 = (isset($_POST['telefono1'])) ? htmlspecialchars(trim(strip_tags($_POST ['telefono1']))) : ""; 
+        $nombre2 = (isset($_POST['nombre2'])) ? htmlspecialchars(trim(strip_tags($_POST ['nombre2']))) : ""; 
+        $descripcion2 = (isset($_POST['descripcion2'])) ? htmlspecialchars(trim(strip_tags($_POST ['descripcion2']))) : ""; 
+        $telefono2 = (isset($_POST['telefono2'])) ? htmlspecialchars(trim(strip_tags($_POST ['telefono2']))) : ""; 
+        
         //Creacion o Actualizacion de contacto
         $cont = new Contacto_emergencia();
 
@@ -123,7 +123,6 @@ class ClienteController {
             $cli->setId_contacto_emerg($this->modelcontacto->masReciente()->getId_contacto());
             $this->modelcliente->registrar($cli);
         }
-        header('Location: index.php');
     }
 
     public function eliminar() {
