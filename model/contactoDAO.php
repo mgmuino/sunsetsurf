@@ -1,7 +1,7 @@
 <?php
 
-require_once '../bd/conexion.php';
-require_once '../model/entidades/contacto_emergencia.php';
+require_once 'bd/conexion.php';
+require_once 'model/entidades/contacto_emergencia.php';
 
 class ContactoDAO {
 

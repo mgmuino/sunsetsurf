@@ -1,7 +1,7 @@
 <?php
 
-require_once '../bd/conexion.php';
-require_once '../model/entidades/usuario.php';
+require_once 'bd/conexion.php';
+require_once 'model/entidades/usuario.php';
 
 class UsuarioDAO {
 

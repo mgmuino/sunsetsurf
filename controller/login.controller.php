@@ -1,13 +1,13 @@
 <?php
 
-require_once '../model/entidades/usuario.php';
-require_once '../model/entidades/cliente.php';
-require_once '../model/entidades/monitor.php';
-require_once '../model/entidades/clase.php';
-require_once '../model/usuarioDAO.php';
-require_once '../model/clienteDAO.php';
-require_once '../model/monitorDAO.php';
-require_once '../model/claseDAO.php';
+require_once 'model/entidades/usuario.php';
+require_once 'model/entidades/cliente.php';
+require_once 'model/entidades/monitor.php';
+require_once 'model/entidades/clase.php';
+require_once 'model/usuarioDAO.php';
+require_once 'model/clienteDAO.php';
+require_once 'model/monitorDAO.php';
+require_once 'model/claseDAO.php';
 
 
 /*
@@ -38,9 +38,9 @@ class LoginController {
     }
 
     public function index() {
-        require_once '../view/header.php';
-        require_once '../view/indexview.php';
-        require_once '../view/footer.php';
+        require_once 'view/header.php';
+        require_once 'view/indexview.php';
+        require_once 'view/footer.php';
     }
 
     public function autenticar() {

@@ -6,8 +6,8 @@
  *  
  */
 
-require_once '../bd/conexion.php';
-require_once '../model/entidades/bono.php';
+require_once 'bd/conexion.php';
+require_once 'model/entidades/bono.php';
 
 class BonoDAO {
 

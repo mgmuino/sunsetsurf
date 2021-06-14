@@ -1,13 +1,13 @@
 <?php
 
-require_once '../model/entidades/usuario.php';
-require_once '../model/entidades/cliente.php';
-require_once '../model/entidades/contacto_emergencia.php';
-require_once '../model/entidades/clase.php';
-require_once '../model/usuarioDAO.php';
-require_once '../model/clienteDAO.php';
-require_once '../model/contactoDAO.php';
-require_once '../model/claseDAO.php';
+require_once 'model/entidades/usuario.php';
+require_once 'model/entidades/cliente.php';
+require_once 'model/entidades/contacto_emergencia.php';
+require_once 'model/entidades/clase.php';
+require_once 'model/usuarioDAO.php';
+require_once 'model/clienteDAO.php';
+require_once 'model/contactoDAO.php';
+require_once 'model/claseDAO.php';
 
 
 /*
@@ -47,9 +47,9 @@ class ClienteController {
             $usu = $this->modelusuario->obtener($_REQUEST['id']);  //Al DAO le solicitamos recuperar un usuario.
             $cont = $this->modelcontacto->obtener($_REQUEST['id_contacto']);  //Al DAO le solicitamos recuperar un contacto.            
         }
-        require_once '../view/header.php';
-        require_once '../view/cliente/cliente-index.php';
-        require_once '../view/footer.php';
+        require_once 'view/header.php';
+        require_once 'view/cliente/cliente-index.php';
+        require_once 'view/footer.php';
     }
 
     public function editar() {
@@ -62,9 +62,9 @@ class ClienteController {
             $usu = $this->modelusuario->obtener($_REQUEST['id']);  //Al DAO le solicitamos recuperar un usuario.
             $cont = $this->modelcontacto->obtener($_REQUEST['id_contacto']);  //Al DAO le solicitamos recuperar un contacto.            
         }
-        require_once '../view/header.php';
-        require_once '../view/cliente/cliente-editar.php';
-        require_once '../view/footer.php';
+        require_once 'view/header.php';
+        require_once 'view/cliente/cliente-editar.php';
+        require_once 'view/footer.php';
     }
 
     public function guardar() {
@@ -133,9 +133,9 @@ class ClienteController {
     public function eliminar() {
         $this->modelusuario->eliminar($_REQUEST['id']);
         $this->modelcontacto->eliminar($_REQUEST['id_contacto']);
-        require_once '../view/header.php';
-        require_once '../view/monitor/monitor-index.php';
-        require_once '../view/footer.php';
+        require_once 'view/header.php';
+        require_once 'view/monitor/monitor-index.php';
+        require_once 'view/footer.php';
     }
 
 }

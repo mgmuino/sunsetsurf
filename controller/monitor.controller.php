@@ -1,13 +1,13 @@
 <?php
 
-require_once '../model/entidades/usuario.php';
-require_once '../model/entidades/cliente.php';
-require_once '../model/entidades/contacto_emergencia.php';
-require_once '../model/entidades/clase.php';
-require_once '../model/usuarioDAO.php';
-require_once '../model/clienteDAO.php';
-require_once '../model/contactoDAO.php';
-require_once '../model/claseDAO.php';
+require_once 'model/entidades/usuario.php';
+require_once 'model/entidades/cliente.php';
+require_once 'model/entidades/contacto_emergencia.php';
+require_once 'model/entidades/clase.php';
+require_once 'model/usuarioDAO.php';
+require_once 'model/clienteDAO.php';
+require_once 'model/contactoDAO.php';
+require_once 'model/claseDAO.php';
 
 
 /*
@@ -39,16 +39,16 @@ class MonitorController {
         
         $this->modelclase->listar() != false ? $fetchallclases = $this->modelclase->listar() : $fetchallclases = array();
 
-        require_once '../view/header.php';
-        require_once '../view/monitor/monitor-index.php';
-        require_once '../view/footer.php';
+        require_once 'view/header.php';
+        require_once 'view/monitor/monitor-index.php';
+        require_once 'view/footer.php';
     }
 
     public function eliminarclase() {
         $this->modelclase->eliminar($_REQUEST['id']);
-        require_once '../view/header.php';
-        require_once '../view/monitor/monitor-index.php';
-        require_once '../view/footer.php';
+        require_once 'view/header.php';
+        require_once 'view/monitor/monitor-index.php';
+        require_once 'view/footer.php';
     }
 
 }
