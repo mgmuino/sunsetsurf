@@ -4,7 +4,7 @@ class Conexion {
 
     private static $dbName = 'sunsetsurf';
     private static $dbHost = '127.0.0.1';
-    private static $dbPort = '3307';
+    private static $dbPort = '3306';
     private static $dbUsername = 'root';
     private static $dbUserPassword = '';
     private static $cont = null;
