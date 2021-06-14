@@ -1,8 +1,9 @@
 # Sunsetsurf
 ## Pasos para levantar la app
 ```
-1 --> Iniciar Xampp y arrancar los servicios de MySQL y de Apache Server
-2 --> ir al navegador y acceder a localhost
+1 --> Iniciar La Maquina virtual
+2 --> Iniciar Xampp y arrancar los servicios de MySQL y de Apache Server
+3 --> ir al enlace del escritorio que te lleva a SunsetSurf, nuestra app
 ```
 ## Usuarios de acceso a aplicacion
 ### Monitor
