@@ -20,7 +20,7 @@ class BonoDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo para listar los bonos
     public function listar() {
         try {
             $result = array();
@@ -34,7 +34,7 @@ class BonoDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo para obtener un bono especifico
     public function obtener($id) {
         try {
             $stm = $this->pdo->prepare("SELECT id_bono, precio, num_clases

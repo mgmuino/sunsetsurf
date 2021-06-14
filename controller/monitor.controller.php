@@ -43,7 +43,7 @@ class MonitorController {
         require_once 'view/monitor/monitor-index.php';
         require_once 'view/footer.php';
     }
-
+    //Metodo que elimina una clase especifica
     public function eliminarclase() {
         $this->modelclase->eliminar($_REQUEST['id']);
         require_once 'view/header.php';

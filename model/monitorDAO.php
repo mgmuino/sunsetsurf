@@ -20,7 +20,7 @@ class MonitorDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que lista todos los monitores
     public function listar() {
         try {
             $result = array();
@@ -35,7 +35,7 @@ class MonitorDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que obtiene un monitor segun id
     public function obtener($id) {
         try {
             $stm = $this->pdo->prepare("SELECT id_monitor, nombre, apellidos, dni, fec_nac, telefono, email, num_titulo, cert_delitos 
@@ -50,7 +50,7 @@ class MonitorDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que elimina un monitor
     public function eliminar($id) {
         try {
             $stm = $this->pdo->prepare("DELETE FROM monitores WHERE id_monitor = ?");
@@ -60,7 +60,7 @@ class MonitorDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que actualiza un monitor
     public function actualizar(Monitor $monitor) {
         try {
             $sql = "UPDATE monitores
@@ -80,7 +80,7 @@ class MonitorDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que inserta un monitor en BD
     public function registrar(Monitor $monitor) {
         try {
             $sql = "INSERT INTO monitores (num_titulo, cert_delitos) 
@@ -97,7 +97,7 @@ class MonitorDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que devuelve la id de un monitor segun su email o dni (login)
     public function getUserid($user) {
         try {
             $stm = $this->pdo->prepare("SELECT id_monitor 

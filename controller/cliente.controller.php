@@ -35,6 +35,7 @@ class ClienteController {
         $this->modelclase = new ClaseDAO();
     }
 
+    //Metodo que en el area de clientes nos muestra nuestro perfil
     public function index() {
         $cli = new Cliente();
         $usu = new Usuario();
@@ -51,7 +52,7 @@ class ClienteController {
         require_once 'view/cliente/cliente-index.php';
         require_once 'view/footer.php';
     }
-
+    //Metodo que edita el cliente 
     public function editar() {
         $cli = new Cliente();
         $usu = new Usuario();
@@ -66,13 +67,10 @@ class ClienteController {
         require_once 'view/cliente/cliente-editar.php';
         require_once 'view/footer.php';
     }
-
+    //Metodo que realiza el registro de un cliente nuevo o actualiza uno existente
     public function guardar() {
 
 
-
-        /* Para realizar la validación podemos implementarla aquí o llamar a un método que nos recoja los datos del 
-          Request y nos devuelva un bool para continuar y redirigir al index o para retornarnos al formulario de edición. */
 
         //Escapando caracteres
         $id = (isset($_POST['id'])) ? htmlspecialchars(trim(strip_tags($_POST ['id']))) : "";
@@ -121,7 +119,7 @@ class ClienteController {
             $this->modelusuario->actualizar($usu);
         } else {
             $this->modelusuario->registrar($usu);
-
+            //Creacion de cliente
             $cli = new Cliente();
             $cli->setId_cliente($this->modelusuario->masReciente()->getId_usuario());
             $cli->setId_contacto_emerg($this->modelcontacto->masReciente()->getId_contacto());
@@ -129,7 +127,7 @@ class ClienteController {
         }
         header('Location: ?c=cliente&a=editar');
     }
-
+    //Metodo que elimina un cliente y su contacto asociado
     public function eliminar() {
         $this->modelusuario->eliminar($_REQUEST['id']);
         $this->modelcontacto->eliminar($_REQUEST['id_contacto']);

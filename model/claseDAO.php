@@ -20,7 +20,7 @@ class ClaseDAO {
             die($e->getMessage());
         }
     }
-
+    //Metodo para listar todas las clases en un array
     public function listar() {
         try {
             $result = array();
@@ -34,7 +34,7 @@ class ClaseDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo para recoger una clase especifica
     public function obtener($id) {
         try {
             $stm = $this->pdo->prepare("SELECT id_clase, nombre_tipo, id_monitor, fecha, lugar, asistentes
@@ -48,7 +48,7 @@ class ClaseDAO {
             die($e->getMessage());
         }
     }
-
+//metodo para eliminar una clase
     public function eliminar($id) {
         try {
             $stm = $this->pdo->prepare("DELETE FROM clases WHERE id_clase = ?");
@@ -58,7 +58,7 @@ class ClaseDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que actualiza una clase
     public function actualizar(Clase $clase) {
         try {
             $sql = "UPDATE clases
@@ -84,7 +84,7 @@ class ClaseDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que registra una clase
     public function registrar(Clase $clase) {
         try {
             $sql = "INSERT INTO clases (nombre_tipo, id_monitor, fecha, lugar, asistentes) 

@@ -1,3 +1,5 @@
+/*Fixed footer*/
+
 .footer {
     position: fixed;
     left: 0;
@@ -7,9 +9,15 @@
     text-align: center;
 }
 
+
+/*Clase que establece el color oscuro y la opacidad*/
+
 .transparent {
     background-color: rgba(66, 66, 66, 0.473);
 }
+
+
+/*Estilo para fijar el video al fondo de la web*/
 
 #myVideo {
     position: fixed;

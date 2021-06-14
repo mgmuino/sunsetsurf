@@ -20,7 +20,7 @@ class MaterialDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que lista todos el material existente
     public function listar() {
         try {
             $result = array();
@@ -34,7 +34,7 @@ class MaterialDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que obtiene un material en especifico
     public function obtener($id) {
         try {
             $stm = $this->pdo->prepare("SELECT id_material, nombre, marca, descripcion, id_tarifa

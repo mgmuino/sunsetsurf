@@ -14,6 +14,7 @@ class UsuarioDAO {
             die($e->getMessage());
         }
     }
+    //Metodo que comprueba la existencia de un usuario
     public function existuser($dni, $email) {
         try {
             $stm = $this->pdo->prepare("SELECT dni, email FROM usuarios WHERE (dni = ? || email = ?) ");
@@ -25,7 +26,7 @@ class UsuarioDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que obtiene un usuario segun la id
     public function obtener($id) {
         try {
             $stm = $this->pdo->prepare("SELECT id_usuario, nombre, apellidos, dni, fec_nac, telefono, email 
@@ -39,7 +40,7 @@ class UsuarioDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que borra un usuario
     public function eliminar($id) {
         try {
             $stm = $this->pdo->prepare("DELETE FROM usuarios WHERE id_usuario = ?");
@@ -49,7 +50,7 @@ class UsuarioDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que acutaliza un usuario
     public function actualizar(Usuario $usuario) {
         try {
             $sql = "UPDATE usuarios
@@ -80,7 +81,7 @@ class UsuarioDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que registra un nuevo usuario
     public function registrar(Usuario $usuario) {
         try {
             $sql = "INSERT INTO usuarios (nombre, apellidos, dni, fec_nac, telefono, email, password) 
@@ -102,7 +103,7 @@ class UsuarioDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que devuelve el usuario creado mas reciente
     public function masReciente() {
         try {
             $stm = $this->pdo->prepare("SELECT    id_usuario, nombre, apellidos, dni, fec_nac, telefono, email
@@ -116,7 +117,7 @@ class UsuarioDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que autentixa un usuario contra la base de datos
     public function autenticar($user, $password) {
         try {
             $stm = $this->pdo->prepare("SELECT * 
@@ -127,20 +128,15 @@ class UsuarioDAO {
             $resultuser = $stm->fetch();
             
             if ($resultuser) {
-//                echo "valid!";
-//                echo $password;
-//                echo $resultuser['password'];
                 return true;
             } else {
-//                echo "invalid";
-//                echo $password;
-//                echo $resultuser['password'];
                 return false;
             }
         } catch (Exception $e) {
             die($e->getMessage());
         }
     }
+    //Metodo que devuelve la id de un usuario segun su email o dni (login)
     public function getUserid($user) {
         try {
             $stm = $this->pdo->prepare("SELECT id_usuario 

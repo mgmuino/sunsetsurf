@@ -20,7 +20,7 @@ class ClienteDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que devuelve todos los clientes existentes
     public function listar() {
         try {
             $result = array();
@@ -36,7 +36,7 @@ class ClienteDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que devuelve un cliente
     public function obtener($id) {
         try {
             $stm = $this->pdo->prepare("SELECT id_cliente, nombre, apellidos, dni, fec_nac, telefono, email, num_clases, id_contacto_emerg, nombre1, descripcion1, telefono1, nombre2, descripcion2, telefono2
@@ -52,7 +52,7 @@ class ClienteDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que borra un cliente especifico (No esta implementado porque se borra en CASCADE en la BD al borrar usuario)
 //    public function eliminar($id) {
 //        try {
 //            $stm = $this->pdo->prepare("DELETE FROM clientes WHERE id_cliente = ?");
@@ -63,6 +63,7 @@ class ClienteDAO {
 //        }
 //    }
 
+//Metodo que actualiza un cliente
     public function actualizar(Cliente $cliente) {
         try {
             $sql = "UPDATE clientes
@@ -80,7 +81,7 @@ class ClienteDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que registra un cliente
     public function registrar(Cliente $cliente) {
         try {
             $sql = "INSERT INTO clientes (id_cliente, num_clases, id_contacto_emerg) 
@@ -97,7 +98,7 @@ class ClienteDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que devuelve la id de un cliente segun su email o dni (login)
     public function getUserid($user) {
         try {
             $stm = $this->pdo->prepare("SELECT id_cliente 

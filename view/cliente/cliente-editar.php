@@ -1,3 +1,4 @@
+<!--Script boton login-->
 <script>
     if (document.referrer == "https://" + window.location.hostname + "/sunsetsurf/public/index.php?c=monitor&a=index") {
         login();
@@ -10,6 +11,7 @@
                 <h1 class="page-header">
                     <?php echo $cli->getId_cliente() != null ? $usu->getNombre() : 'Nuevo Registro'; ?>
                 </h1>
+                <!--Formulario de Edicion/Creacion de clientes-->
                 <form id="frm-cliente" action="?c=Cliente&a=guardar" method="post" enctype="multipart/form-data">
                 <div class="error" id="error_form"></div>
                 <input type="hidden" name="id" value="<?php echo $cli->getId_cliente(); ?>" />

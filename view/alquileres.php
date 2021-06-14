@@ -1,3 +1,4 @@
+<!--ALQUILERES-->
 <div class="transparent d-flex justify-content-center content mt-2 mb-2">
     <h2>Alquileres</h2>
 </div>

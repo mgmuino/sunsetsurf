@@ -14,7 +14,7 @@ class ContactoDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que devuelve un contacto segun id
     public function obtener($id) {
         try {
             $stm = $this->pdo->prepare("SELECT id_contacto, nombre1, descripcion1, telefono1, nombre2, descripcion2, telefono2 
@@ -28,7 +28,7 @@ class ContactoDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que elimina un contacto
     public function eliminar($id) {
         try {
             $stm = $this->pdo->prepare("DELETE FROM contactos_emergencia WHERE id_contacto = ?");
@@ -38,7 +38,7 @@ class ContactoDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que actualiza un contacto
     public function actualizar(Contacto_emergencia $contacto_emergencia) {
         try {
             $sql = "UPDATE contactos_emergencia
@@ -67,7 +67,7 @@ class ContactoDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que registra un nuevo contacto
     public function registrar(Contacto_emergencia $contacto_emergencia) {
         try {
             $sql = "INSERT INTO contactos_emergencia (nombre1, descripcion1, telefono1, nombre2, descripcion2, telefono2) 
@@ -88,7 +88,7 @@ class ContactoDAO {
             die($e->getMessage());
         }
     }
-
+//Metodo que devuelve el contacto creado mas reciente
     public function masReciente() {
         try {
             $stm = $this->pdo->prepare("SELECT    id_contacto, nombre1, descripcion1, telefono1, nombre2, descripcion2, telefono2

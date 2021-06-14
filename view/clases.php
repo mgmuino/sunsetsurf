@@ -1,3 +1,4 @@
+<!--CARDS CLASES DE SURF-->
 <div class="transparent d-flex justify-content-center content mt-2 mb-2">
     <h2>Clases de Surf</h2>
 </div>

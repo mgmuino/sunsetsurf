@@ -1,9 +1,11 @@
+<!--Script boton login-->
 <script>
     login();
 </script>
 <div class="transparent d-flex justify-content-center content mt-2 mb-2">
     <h2>MONITOR SITE</h2>
 <table class="table table-striped">
+<!--LISTADO DE CLIENTES-->
     <caption>Clientes</caption>
     <thead>
         <tr>

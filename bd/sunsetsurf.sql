@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-06-2021 a las 22:25:01
+-- Tiempo de generación: 14-06-2021 a las 17:14:59
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.6
 
@@ -87,16 +87,6 @@ CREATE TABLE `clases` (
   `asistentes` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `clases`
---
-
-INSERT INTO `clases` (`id_clase`, `nombre_tipo`, `id_monitor`, `fecha`, `lugar`, `asistentes`) VALUES
-(1, 'Bautismo', 1, '2021-06-14', 'Bastiagueiro', 3),
-(2, 'Iniciación', 2, '2021-06-15', 'Bastiagueiro', 5),
-(3, 'Perfeccionamiento', 1, '2021-06-18', 'Caion', 6),
-(4, 'Tecnificación', 1, '2021-06-19', 'Sabon', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -114,8 +104,8 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id_cliente`, `num_clases`, `id_contacto_emerg`) VALUES
-(3, 0, 1),
-(4, 0, 2);
+(2, 0, 1),
+(3, 0, 2);
 
 -- --------------------------------------------------------
 
@@ -151,8 +141,8 @@ CREATE TABLE `contactos_emergencia` (
 --
 
 INSERT INTO `contactos_emergencia` (`id_contacto`, `nombre1`, `descripcion1`, `telefono1`, `nombre2`, `descripcion2`, `telefono2`) VALUES
-(1, 'contacto1', 'madre', '333333333', 'contacto2', 'padre', '333333333'),
-(2, 'contacto1', 'padre', '444444444', '', '', '');
+(1, 'contacto', 'madre', '111111111', NULL, NULL, NULL),
+(2, 'contacto', 'tio', '111111111', 'contacto', 'hermano', '222222222');
 
 -- --------------------------------------------------------
 
@@ -202,8 +192,7 @@ CREATE TABLE `monitores` (
 --
 
 INSERT INTO `monitores` (`id_monitor`, `num_titulo`, `cert_delitos`) VALUES
-(1, '1', 'si'),
-(2, '2', 'si');
+(1, '1', 'si');
 
 -- --------------------------------------------------------
 
@@ -267,10 +256,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellidos`, `dni`, `fec_nac`, `telefono`, `email`, `password`) VALUES
-(1, 'monitor1', 'apellidos', '11111111q', '1992-06-10', '111111111', 'monitor1@monitor1.com', '234d3309b86c261aba8db1f878ca00ef57cf0f6c'),
-(2, 'monitor2', 'apellidos', '22222222q', '1992-06-03', '222222222', 'monitor2@monitor2.com', '87125d126c7a98d887865e8fddb1c525b56816dc'),
-(3, 'cliente1', 'apellidos', '33333333q', '2009-06-10', '333333333', 'cliente1@cliente1.com', '06b8abdc1bed263dcce2f8b6cde6c5189e61e582'),
-(4, 'cliente2', 'apellidos', '44444444q', '2021-06-10', '444444444', 'cliente2@cliente2.com', '4ca688df015ff0ed013fb42e35e07278335c8ebd');
+(1, 'monitor', 'uno', '11111111Q', '2021-06-01', '111111111', 'monitor1@monitor1.com', '234d3309b86c261aba8db1f878ca00ef57cf0f6c'),
+(2, 'cliente', 'uno', '22222222Q', '2021-06-02', '222222222', 'cliente1@cliente1.com', '06b8abdc1bed263dcce2f8b6cde6c5189e61e582'),
+(3, 'cliente', 'dos', '33333333Q', '2021-06-01', '333333333', 'cliente2@cliente2.com', '4ca688df015ff0ed013fb42e35e07278335c8ebd');
 
 --
 -- Índices para tablas volcadas
@@ -395,7 +383,7 @@ ALTER TABLE `clases`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `compras`
@@ -419,7 +407,7 @@ ALTER TABLE `material`
 -- AUTO_INCREMENT de la tabla `monitores`
 --
 ALTER TABLE `monitores`
-  MODIFY `id_monitor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_monitor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `tarifas_material`
@@ -431,7 +419,7 @@ ALTER TABLE `tarifas_material`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas

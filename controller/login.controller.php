@@ -36,13 +36,14 @@ class LoginController {
         $this->modelmonitor = new MonitorDAO();
         $this->modelclase = new ClaseDAO();
     }
-
+    //Lo que se muestra en la pantalla principal, donde esta el login
     public function index() {
         require_once 'view/header.php';
         require_once 'view/indexview.php';
         require_once 'view/footer.php';
     }
 
+    //Metodo que autentica un usuario contra la base de datos
     public function autenticar() {
         $user = (isset($_POST['user'])) ? htmlspecialchars(trim(strip_tags($_POST ['user']))) : ""; //Escanpando caracteres 
         $password = (isset($_POST['password'])) ? htmlspecialchars(trim(strip_tags($_POST ['password']))) : ""; //Escanpando caracteres 
@@ -58,7 +59,8 @@ class LoginController {
         $this->modelusuario->getUserid($user) != false ? $usu = $this->modelusuario->obtener($usu->getId_usuario()) : $usu = new Usuario();
         $this->modelcliente->getUserid($user) != false ? $cli = $this->modelcliente->obtener($cli->getId_cliente()) : $cli = new Cliente();
         $this->modelmonitor->getUserid($user) != false ? $moni = $this->modelmonitor->obtener($moni->getId_monitor()) : $moni = new Monitor();
-
+        
+        //Se diferencia entre monitor y cliente a la hora de loguearse, no ven lo mismo
         if ($this->modelusuario->autenticar($user, $password) && ($cli->getId_cliente() == $usu->getId_usuario())) {
             session_start();
             $_SESSION["id_cliente"] = $cli->getId_cliente();
@@ -77,6 +79,7 @@ class LoginController {
         }
     }
 
+    //Metodo que desloguea al usuario
     public function logout() {
         session_start();
         // Borramos toda la sesion
