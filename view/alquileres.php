@@ -4,7 +4,7 @@
 <div class="d-flex justify-content-center container mb-5">
     <div class="card-deck">
         <div class="transparent card text-light" style="width: 30rem;">
-            <img class="card-img-top" src="../public/assets/images/tabla-blanda.jpg" alt="tabla blanda">
+            <img class="card-img-top" src="public/assets/images/tabla-blanda.jpg" alt="tabla blanda">
             <div class="card-body">
                 <h5 class="card-title">TABLA DE SURF BLANDA</h5>
                 <a href="mailto:alquileres@sunsetsurf.com?subject=Alquiler Tabla" class="btn btn-info">Reservar</a>
@@ -16,7 +16,7 @@
             </ul>
         </div>
         <div class="transparent card text-light" style="width: 30rem;">
-            <img class="card-img-top" src="../public/assets/images/neopreno.jpg" alt="neopreno">
+            <img class="card-img-top" src="public/assets/images/neopreno.jpg" alt="neopreno">
             <div class="card-body">
                 <h5 class="card-title">NEOPRENO</h5>
                 <a href="mailto:alquileres@sunsetsurf.com?subject=Alquiler Neopreno" class="btn btn-info">Reservar</a>

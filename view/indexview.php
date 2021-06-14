@@ -3,14 +3,14 @@
     <!-- The slideshow -->
     <div class="carousel-inner transparent text-center text-light mt-5">
         <div class="carousel-item active">
-            <img src="../public/assets/images/home1.jpg" alt="home1">
+            <img src="public/assets/images/home1.jpg" alt="home1">
             <h1>ESCUELA DE SURF EN A CORUÑA</h1>
             <p>Clases de Surf de iniciación, bautismo, perfeccionamiento y tecnificación</p>
             <a href="?c=cliente&a=editar" class="btn btn-primary mb-5">¡Apúntate! No esperes más!</a>
             </img>
         </div>
         <div class="carousel-item">
-            <img src="../public/assets/images/home2.jpg" alt="home2">
+            <img src="public/assets/images/home2.jpg" alt="home2">
             <h1>ESCUELA DE SURF EN A CORUÑA</h1>
             <p>Clases de Surf de iniciación, bautismo, perfeccionamiento y tecnificación</p>
             <a href="?c=cliente&a=editar" class="btn btn-primary mb-5">¡Apúntate! No esperes más!</a>

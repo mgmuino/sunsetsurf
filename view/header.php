@@ -11,16 +11,16 @@
 
     <title>Sunset Surf</title>
     <!-- Custom styles -->
-    <link href="../public/assets/css/style.css" rel="stylesheet" type="text/css" />
-    <link rel="shortcut icon" type="images/png" href="../public/assets/images/icon.png" />
+    <link href="public/assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" type="images/png" href="public/assets/images/icon.png" />
 
     <!-- Custom js -->
-    <script type="text/javascript" src="../public/assets/js/main.js" charset="utf-8"></script>
+    <script type="text/javascript" src="public/assets/js/main.js" charset="utf-8"></script>
 </head>
 
 <body>
     <video autoplay muted loop id="myVideo">
-        <source src="../public/assets/media/waves-loop.mp4" type="video/mp4">
+        <source src="public/assets/media/waves-loop.mp4" type="video/mp4">
     </video>
     <div class="d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header>
@@ -28,7 +28,7 @@
             <nav class="transparent navbar navbar-expand-lg navbar-expand-xl navbar-light justify-content-around text-center">
 
                 <a class="navbar-brand font-weight-bold text-light mr-5" href="?">
-                    <img src="../public/assets/images/icon.png" width="50" height="50" class="d-inline-block align-center mr-sm-2" alt="">
+                    <img src="public/assets/images/icon.png" width="50" height="50" class="d-inline-block align-center mr-sm-2" alt="">
                     <h4>Sunset Surf</h4>
                 </a>
                 <!-- boton de menu que se muestra al colapsar pagina -->
@@ -63,7 +63,7 @@
                     <a id="btnlogout" href="?c=login&a=logout" onclick="logout()" class="btn btn-danger mr-sm-2 mb-sm-2" style="display:none">Logout</a>
                 </div>
                 <audio controls class="float-xl-right float-right float-sm-right mr-sm-4">
-                    <source src="../public/assets/media/waves-sound.mp3" type="audio/mpeg">
+                    <source src="public/assets/media/waves-sound.mp3" type="audio/mpeg">
                     Your browser does not support the audio tag.
                 </audio>
             </nav>
