@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-06-2021 a las 17:14:59
+-- Tiempo de generación: 14-06-2021 a las 18:06:37
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.6
 
@@ -86,6 +86,16 @@ CREATE TABLE `clases` (
   `lugar` varchar(30) NOT NULL,
   `asistentes` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `clases`
+--
+
+INSERT INTO `clases` (`id_clase`, `nombre_tipo`, `id_monitor`, `fecha`, `lugar`, `asistentes`) VALUES
+(5, 'Bautismo', 1, '2021-06-15', 'Caion', 3),
+(6, 'Iniciación', 1, '2021-06-16', 'Bastiagueiro', 6),
+(7, 'Perfeccionamiento', 1, '2021-06-18', 'Matadero', 9),
+(8, 'Tecnificación', 1, '2021-06-19', 'Doniños', 1);
 
 -- --------------------------------------------------------
 
@@ -377,7 +387,7 @@ ALTER TABLE `bonos`
 -- AUTO_INCREMENT de la tabla `clases`
 --
 ALTER TABLE `clases`
-  MODIFY `id_clase` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_clase` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
