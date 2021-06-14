@@ -68,26 +68,30 @@ class ClienteController {
     }
 
     public function guardar() {
+
+
+
         /* Para realizar la validación podemos implementarla aquí o llamar a un método que nos recoja los datos del 
           Request y nos devuelva un bool para continuar y redirigir al index o para retornarnos al formulario de edición. */
 
         //Escapando caracteres
-        $id = (isset($_POST['id'])) ? htmlspecialchars(trim(strip_tags($_POST ['id']))) : "";  
-        $nombre = (isset($_POST['nombre'])) ? htmlspecialchars(trim(strip_tags($_POST ['nombre']))) : ""; 
-        $apellidos = (isset($_POST['apellidos'])) ? htmlspecialchars(trim(strip_tags($_POST ['apellidos']))) : ""; 
-        $dni = (isset($_POST['dni'])) ? htmlspecialchars(trim(strip_tags($_POST ['dni']))) : ""; 
-        $fec_nac = (isset($_POST['fec_nac'])) ? htmlspecialchars(trim(strip_tags($_POST ['fec_nac']))) : ""; 
-        $telefono = (isset($_POST['telefono'])) ? htmlspecialchars(trim(strip_tags($_POST ['telefono']))) : ""; 
-        $email = (isset($_POST['email'])) ? htmlspecialchars(trim(strip_tags($_POST ['email']))) : ""; 
-        $password = (isset($_POST['password'])) ? htmlspecialchars(trim(strip_tags($_POST ['password']))) : ""; 
-        $id_contacto = (isset($_POST['id_contacto'])) ? htmlspecialchars(trim(strip_tags($_POST ['id_contacto']))) : ""; 
-        $nombre1 = (isset($_POST['nombre1'])) ? htmlspecialchars(trim(strip_tags($_POST ['nombre1']))) : ""; 
-        $descripcion1 = (isset($_POST['descripcion1'])) ? htmlspecialchars(trim(strip_tags($_POST ['descripcion1']))) : ""; 
-        $telefono1 = (isset($_POST['telefono1'])) ? htmlspecialchars(trim(strip_tags($_POST ['telefono1']))) : ""; 
-        $nombre2 = (isset($_POST['nombre2'])) ? htmlspecialchars(trim(strip_tags($_POST ['nombre2']))) : ""; 
-        $descripcion2 = (isset($_POST['descripcion2'])) ? htmlspecialchars(trim(strip_tags($_POST ['descripcion2']))) : ""; 
-        $telefono2 = (isset($_POST['telefono2'])) ? htmlspecialchars(trim(strip_tags($_POST ['telefono2']))) : ""; 
-        
+        $id = (isset($_POST['id'])) ? htmlspecialchars(trim(strip_tags($_POST ['id']))) : "";
+        $nombre = (isset($_POST['nombre'])) ? htmlspecialchars(trim(strip_tags($_POST ['nombre']))) : "";
+        $apellidos = (isset($_POST['apellidos'])) ? htmlspecialchars(trim(strip_tags($_POST ['apellidos']))) : "";
+        $dni = (isset($_POST['dni'])) ? htmlspecialchars(trim(strip_tags($_POST ['dni']))) : "";
+        $fec_nac = (isset($_POST['fec_nac'])) ? htmlspecialchars(trim(strip_tags($_POST ['fec_nac']))) : "";
+        $telefono = (isset($_POST['telefono'])) ? htmlspecialchars(trim(strip_tags($_POST ['telefono']))) : "";
+        $email = (isset($_POST['email'])) ? htmlspecialchars(trim(strip_tags($_POST ['email']))) : "";
+        $password = (isset($_POST['password'])) ? htmlspecialchars(trim(strip_tags($_POST ['password']))) : "";
+        $id_contacto = (isset($_POST['id_contacto'])) ? htmlspecialchars(trim(strip_tags($_POST ['id_contacto']))) : "";
+        $nombre1 = (isset($_POST['nombre1'])) ? htmlspecialchars(trim(strip_tags($_POST ['nombre1']))) : "";
+        $descripcion1 = (isset($_POST['descripcion1'])) ? htmlspecialchars(trim(strip_tags($_POST ['descripcion1']))) : "";
+        $telefono1 = (isset($_POST['telefono1'])) ? htmlspecialchars(trim(strip_tags($_POST ['telefono1']))) : "";
+        $nombre2 = (isset($_POST['nombre2'])) ? htmlspecialchars(trim(strip_tags($_POST ['nombre2']))) : "";
+        $descripcion2 = (isset($_POST['descripcion2'])) ? htmlspecialchars(trim(strip_tags($_POST ['descripcion2']))) : "";
+        $telefono2 = (isset($_POST['telefono2'])) ? htmlspecialchars(trim(strip_tags($_POST ['telefono2']))) : "";
+
+
         //Creacion o Actualizacion de contacto
         $cont = new Contacto_emergencia();
 
@@ -123,6 +127,7 @@ class ClienteController {
             $cli->setId_contacto_emerg($this->modelcontacto->masReciente()->getId_contacto());
             $this->modelcliente->registrar($cli);
         }
+        header('Location: ?c=cliente&a=editar');
     }
 
     public function eliminar() {

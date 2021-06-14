@@ -50,7 +50,6 @@
 
                     <form class="form-inline my-2 my-lg-0" id="formlogin" action="?c=login&a=autenticar" style="display:flex" method="POST" enctype="application/x-www-form-urlencoded" accept-charset="UTF-8">
                         <div class="form-group">
-                        <div class="error" id="error_login" style="display: none;"><?php echo $_REQUEST['err'] != false ? $_REQUEST['err'] : ''; ?></div>
                             <input class="form-control mr-sm-2 mb-sm-2" type="text" name="user" placeholder="Correo/Dni" required>
                         </div>
                         <div class="form-group">

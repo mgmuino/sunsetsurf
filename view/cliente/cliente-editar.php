@@ -11,34 +11,35 @@
                     <?php echo $cli->getId_cliente() != null ? $usu->getNombre() : 'Nuevo Registro'; ?>
                 </h1>
                 <form id="frm-cliente" action="?c=Cliente&a=guardar" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="id" value="<?php echo $cli->getId_cliente(); ?>" />
+                <div class="error" id="error_form"></div>
+                <input type="hidden" name="id" value="<?php echo $cli->getId_cliente(); ?>" />
 
                     <div class="form-group">
                         <label>Nombre *</label>
-                        <input type="text" name="nombre" value="<?php echo $usu->getNombre(); ?>" class="form-control" placeholder="Ingrese su nombre" required />
+                        <input type="text" name="nombre" value="<?php echo $usu->getNombre(); ?>" class="form-control" placeholder="Ingrese su nombre" required pattern="[A-Za-z\sñ]+" title="Solo texto"/>                        
                     </div>
 
                     <div class="form-group">
                         <label>Apellidos *</label>
-                        <input type="text" name="apellidos" value="<?php echo $usu->getApellidos(); ?>" class="form-control" placeholder="Ingrese su apellido" required />
+                        <input type="text" name="apellidos" value="<?php echo $usu->getApellidos(); ?>" class="form-control" placeholder="Ingrese su apellido" required pattern="[A-Za-z\sñ]+" title="Solo texto"/>
                     </div>
 
                     <div class="form-group">
                         <label>Dni *</label>
-                        <input type="text" name="dni" value="<?php echo $usu->getDni(); ?>" class="form-control" placeholder="Ingrese su dni" required />
+                        <input type="text" name="dni" value="<?php echo $usu->getDni(); ?>" class="form-control" placeholder="Ingrese su dni" required pattern="[0-9]{8,8}[A-Z]" title="8 digitos 1 letra mayuscula"/>
                     </div>
 
                     <div class="form-group">
                         <label>Fecha de nacimiento *</label>
-                        <input type="date" name="fec_nac" value="<?php echo $usu->getFec_nac(); ?>" class="form-control datepicker" placeholder="Ingrese su fecha de nacimiento" required />
+                        <input type="date" name="fec_nac" value="<?php echo $usu->getFec_nac(); ?>" class="form-control datepicker" placeholder="Ingrese su fecha de nacimiento" required pattern="\d{1,2}\/\d{1,2}\/\d{2,4}" title="dd/mm/yyyy"/>
                     </div>
                     <div class="form-group">
                         <label>Teléfono *</label>
-                        <input type="text" name="telefono" value="<?php echo $usu->getTelefono(); ?>" class="form-control datepicker" placeholder="Ingrese su teléfono" required />
+                        <input type="text" name="telefono" value="<?php echo $usu->getTelefono(); ?>" class="form-control datepicker" placeholder="Ingrese su teléfono" required pattern="[0-9]{9}" title="9 numeros enteros"/>
                     </div>
                     <div class="form-group">
                         <label>Correo *</label>
-                        <input type="text" name="email" value="<?php echo $usu->getEmail(); ?>" class="form-control" placeholder="Ingrese su correo electrónico" required />
+                        <input type="text" name="email" value="<?php echo $usu->getEmail(); ?>" class="form-control" placeholder="Ingrese su correo electrónico" required pattern="[^@\s]+@[^@\.\s]+(\.[^@\.\s]+)+" title="Formato email"/>
                     </div>
                     <div class="form-group">
                         <label>Contraseña *</label>
@@ -47,15 +48,15 @@
                     <div class="form-group">
                         <input type="hidden" name="id_contacto" value="<?php echo $cont->getId_contacto(); ?>" />
                         <label>Contacto de emergencia 1*</label>
-                        <input type="text" name="nombre1" value="<?php echo $cont->getNombre1(); ?>" class="form-control" placeholder="Nombre" required />
-                        <input type="text" name="descripcion1" value="<?php echo $cont->getDescripcion1(); ?>" class="form-control" placeholder="Descripción" required />
-                        <input type="text" name="telefono1" value="<?php echo $cont->getTelefono1(); ?>" class="form-control" placeholder="Teléfono" required />
+                        <input type="text" name="nombre1" value="<?php echo $cont->getNombre1(); ?>" class="form-control" placeholder="Nombre" required pattern="[A-Za-z\sñ]+" title="Solo texto"/>
+                        <input type="text" name="descripcion1" value="<?php echo $cont->getDescripcion1(); ?>" class="form-control" placeholder="Descripción" required pattern="[A-Za-z\sñ]+" title="Solo texto"/>
+                        <input type="text" name="telefono1" value="<?php echo $cont->getTelefono1(); ?>" class="form-control" placeholder="Teléfono" required pattern="[0-9]{9}" title="9 numeros enteros"/>
                     </div>
                     <div class="form-group">
                         <label>Contacto de emergencia 2 (opcional)</label>
-                        <input type="text" name="nombre2" value="<?php echo $cont->getNombre2(); ?>" class="form-control" placeholder="Nombre" />
-                        <input type="text" name="descripcion2" value="<?php echo $cont->getDescripcion2(); ?>" class="form-control" placeholder="Descripción" />
-                        <input type="text" name="telefono2" value="<?php echo $cont->getTelefono2(); ?>" class="form-control" placeholder="Teléfono" />
+                        <input type="text" name="nombre2" value="<?php echo $cont->getNombre2(); ?>" class="form-control" placeholder="Nombre" pattern="[A-Za-z\sñ]+" title="Solo texto"/>
+                        <input type="text" name="descripcion2" value="<?php echo $cont->getDescripcion2(); ?>" class="form-control" placeholder="Descripción" pattern="[A-Za-z\sñ]+" title="Solo texto"/>
+                        <input type="text" name="telefono2" value="<?php echo $cont->getTelefono2(); ?>" class="form-control" placeholder="Teléfono" pattern="[0-9]{9}" title="9 numeros enteros"/>
                     </div>
 
                     <div class="d-flex justify-content-center">
@@ -64,13 +65,6 @@
                         <button class="btn btn-danger mr-1" onclick="history.back ()">Atrás</button>
                     </div>
                 </form>
-                <script>
-                    $(document).ready(function() {
-                        $("#frm-cliente").submit(function() {
-                            return $(this).validate();
-                        });
-                    })
-                </script>
             </div>
         </div>
     </div>

@@ -14,6 +14,17 @@ class UsuarioDAO {
             die($e->getMessage());
         }
     }
+    public function existuser($dni, $email) {
+        try {
+            $stm = $this->pdo->prepare("SELECT dni, email FROM usuarios WHERE (dni = ? || email = ?) ");
+
+
+            $stm->execute(array($dni, $email));
+            return $stm->fetchObject("Usuario");
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
 
     public function obtener($id) {
         try {

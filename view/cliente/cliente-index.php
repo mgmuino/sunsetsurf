@@ -72,13 +72,6 @@
                             <button class="btn btn-success">Guardar</button>
                         </div>
                     </form>
-                    <script>
-                        $(document).ready(function() {
-                            $("#frm-cliente").submit(function() {
-                                return $(this).validate();
-                            });
-                        })
-                    </script>
                 </div>
             </div>
         </div>
